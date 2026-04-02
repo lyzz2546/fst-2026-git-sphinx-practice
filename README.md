@@ -102,8 +102,8 @@ By default, Sphinx only supports reStructuredText (`.rst`). We need to modify th
    ```text
    _build/
 
-   Type `git status` again, now you will not see the `_build` directory. The change in ths directory will no longer be tracked.
    ```
+   Type `git status` again, now you will not see the `_build` directory. The change in ths directory will no longer be tracked.
 
 3. **Build and Verify**:
    Run the following in your local terminal:
