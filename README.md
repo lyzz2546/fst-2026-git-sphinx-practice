@@ -1,93 +1,169 @@
-# fst-2026-git-practice
+# Git & Sphinx Multi-environment Collaboration Workflow
 
+This practice is designed to help you get familiar with basic Git operations (`add`, `commit`, `push`, `pull`), learn how to change remote repository addresses, and experience a collaborative workflow by alternating between your local computer and a remote workstation. Additionally, you will build and configure a Sphinx documentation project with Markdown support from scratch.
 
+## Prerequisite: Git Global Configuration
 
-## Getting started
+If this is your first time using Git, you must configure your Git username and email before doing anything else; otherwise, your `git commit` will fail.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+For details and specific commands, please **first read the [git-tutorial.md](git-tutorial.md)** included in this repository (refer to the "2. Initial Setup" section). The tutorial also covers core Git concepts. You can refer back to it anytime you forget a command.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+---
 
-## Add your files
+## Task 1: Prepare Your Own Remote Repository & Modify the Remote
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Since you have cloned a public course repository, you need to link it to your own remote repository to push your assignments.
 
-```
-cd existing_repo
-git remote add origin http://10.62.192.92:11080/yezhouteng/fst-2026-git-practice.git
-git branch -M main
-git push -uf origin main
-```
+1. **Register/Login to a remote Git server**:
+   - Option 1: *(Alternative)* You can also use your own GitHub / GitLab / Gitee account.
+   - Option 2: Internal GitLab: Visit `http://10.62.192.92:11080/` to register. After registering, please contact **Haoxuan Li** to activate your account.
+2. **Create a new repository**: Create a new, empty project in your Git account. **DO NOT** initialize it with a README, `.gitignore`, or License.
+3. **Modify the Remote address on BOTH devices**:
+   On **both** your local computer and our remote workstation, navigate to the cloned project folder in the terminal and replace the default origin with your newly created repository address:
+   ```bash
+   # Remove the original course repository origin
+   git remote remove origin
+   
+   # Add your own repository as the new origin
+   git remote add origin <YOUR-NEW-REPOSITORY-URL(HTTP/SSH)>
+   ```
 
-## Integrate with your tools
+## Task 2: Local Environment Initialization & First Commit
 
-- [ ] [Set up project integrations](http://10.62.192.92:11080/yezhouteng/fst-2026-git-practice/-/settings/integrations)
+We will start building the Sphinx project from your **local computer**.
 
-## Collaborate with your team
+1. **Install necessary Python packages**:
+   Run the following in your local environment (if using Conda, make sure the environment is activated):
+   ```bash
+   pip install sphinx sphinx-rtd-theme sphinx-markdown-tables myst-parser
+   ```
+2. **Initialize the Sphinx project**:
+   In the project root directory, run:
+   ```bash
+   sphinx-quickstart
+   ```
+   Answer the questions as prompted (you can press Enter for most default values; fill in your own info for Project name and Author name).
+3. **Make the first Commit and Push**:
+   Once initialized, we will commit these basic files and push them to your remote repository:
+   ```bash
+   git status               # Check status; you will see many untracked red files
+   git add .                # Stage all files
+   git commit -m "docs: initialize basic sphinx project"
+   git push -u origin main  # If your default branch is master, change 'main' to 'master'
+   ```
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+## Task 3: Local Markdown Configuration & Second Commit
 
-## Test and Deploy
+By default, Sphinx only supports reStructuredText (`.rst`). We need to modify the configuration to support Markdown and the Read the Docs theme.
 
-Use the built-in continuous integration in GitLab.
+1. **Modify configuration file**: Open `conf.py` (still on your local computer), find the corresponding sections, and add/modify the following variables (**DO NOT just overwrite the whole file; merge these into the existing config**):
+   ```python
+   extensions = [
+       'sphinx.ext.autodoc',
+       'sphinx.ext.viewcode',
+       'sphinx.ext.napoleon',
+       'sphinx_rtd_theme',
+       'sphinx_markdown_tables',
+       'myst_parser',
+   ]
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+   html_theme = 'sphinx_rtd_theme'
 
-***
+   source_suffix = {
+       '.rst': 'restructuredtext',
+       '.md': 'markdown',
+   }
 
-# Editing this README
+   myst_enable_extensions = [
+       'colon_fence',
+       'deflist',
+       'dollarmath',
+       'fieldlist',
+       'html_admonition',
+       'html_image',
+       'linkify',
+       'replacements',
+       'smartquotes',
+       'substitution',
+       'tasklist',
+   ]
+   ```
+2. **Configure `.gitignore`**:
+   The compiled HTML files should not be committed to the Git repository.
+   Create a file named `.gitignore` in the root folder, and add the following content:
+   ```text
+   _build/
+   ```
+3. **Make the second Commit and Push**:
+   ```bash
+   git add conf.py .gitignore
+   git commit -m "feat: add markdown support, rtd theme and gitignore"
+   git push
+   ```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Task 4: Switch to the Remote Workstation (Third Commit, also revisit to remote development)
 
-## Suggestions for a good README
+Now, let's switch to the **remote workstation** to continue development. *(Note: The remote workstation already has Sphinx-related packages installed, so you don't need to run `pip install` again).* Also, please note that you can use VSCode remote editting (or other similar tools).
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+1. **Pull the latest code**:
+   Since you already cloned the repo and changed the remote in Task 1, navigate to the folder and pull the updates you just pushed from your local machine:
+   ```bash
+   cd fst-2026-git-practice
+   git pull origin main  # Pull the Sphinx files you created locally
+   ```
+2. **Add a new Markdown document**:
+   Create a new file named `practice.md` and write anything you like. For example:
+   ```markdown
+   # Git Collaboration Practice
+   
+   This content was added from the remote workstation!
+   ```
+3. **Update the index**:
+   Open `index.rst`, and add your newly created Markdown filename (without the extension) under the `toctree` directive:
+   ```rst
+   .. toctree::
+      :maxdepth: 2
+      :caption: Contents:
 
-## Name
-Choose a self-explaining name for your project.
+      practice
+   ```
+4. **Make the third Commit and Push**:
+   ```bash
+   git add practice.md index.rst
+   git commit -m "feat: add practice.md from remote workstation"
+   git push origin main
+   ```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Task 5: Back to Local for Sync and Verification
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Once the workstation tasks are done, switch back to your **local computer**.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+1. **Pull the latest code**:
+   Your local repository is now behind the remote repository. You need to pull the new changes:
+   ```bash
+   git pull
+   ```
+2. **Build and Verify**:
+   Run the following in your local terminal:
+   ```bash
+   make html
+   ```
+   Navigate to the `_build/html/` folder and open `index.html` with your web browser. If you see the Read the Docs theme and the `practice` page you added from the workstation in the sidebar, congratulations! You have successfully completed the practice.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+---
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## Extension: How to make your website accessible to others?
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Currently, your generated web pages can only be viewed on your own computer via the `file:///` protocol. If you want others to access it over the internet or an intranet, you have a few options:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### 1. Server Deployment (IP Access)
+If you have a cloud server or an internal server, you can copy all files inside `_build/html/` to the server and use web server software to host them:
+* **Quick Test (Python)**: Run `python -m http.server 8080` inside the `_build/html/` directory. Others can access it via `http://<YOUR-IP>:8080`.
+* **Production (Nginx/Apache)**: Install Nginx, change the `root` directive in the config file to point to your HTML folder, and start the service. It will be stably accessible via your IP or domain.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+### 2. Static Site Hosting (Free & Easy)
+If you don't want to configure a server yourself, you can use free static hosting services provided by Git platforms. The core concept is: you push your HTML files (or source files) to a specific branch/repo, and the platform automatically assigns a domain and hosts the website.
+* **[GitHub Pages](https://pages.github.com/)**: The world's most popular free hosting service, seamlessly integrated with GitHub repositories.
+* **[GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/)**: If you use GitLab, you can write a `.gitlab-ci.yml` script to automatically build Sphinx and publish the site every time you push.
+* **[Read the Docs](https://readthedocs.org/)**: A hosting platform specifically designed for Sphinx documentation. It can link directly to your Git repository and build automatically.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
