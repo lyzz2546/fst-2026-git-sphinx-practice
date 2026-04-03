@@ -14,7 +14,9 @@ Author: Haoxuan Li
 - A GitHub account
 - Basic command line knowledge
 
+>Notes: This document takes the interaction with GitHub as an example. In actual operations, when linking with other remote servers, the "remote path" should be modified according to the specific circumstances.
 ---
+
 
 ## 1. Git Basic Concepts
 
@@ -46,7 +48,7 @@ git --version
 ```
 ### 2.2 Configure User Identity
 ```bash
-# ensure git to where
+# ensure git to where（github moode）
 git config --global user.name "Your Name"  
 git config --global user.email "your_email@example.com"
 ```
