@@ -1,17 +1,19 @@
 #  Git to remote
 
+**Note:** This is **NOT** in class practice, go to `README.md` for in class practive.
+
 Author: Haoxuan Li
 
 ## Objectives
 
 - Understand the Git workflow: add → commit → push
 - Distinguish between local and remote repositories
-- Upload Markdown files to GitHub
+- Upload Markdown files to GitHub (Or some other remote repository)
 
  Prerequisites
 
 - Git installed on local computer
-- A GitHub account
+- A GitHub account (Not necessary, could be other)
 - Basic command line knowledge
 
 >Notes: This document takes the interaction with GitHub as an example. In actual operations, when linking with other remote servers, the "remote path" should be modified according to the specific circumstances.

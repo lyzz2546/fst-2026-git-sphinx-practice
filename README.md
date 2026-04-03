@@ -1,4 +1,6 @@
-# Git & Sphinx Multi-environment Collaboration Workflow
+# Git Local and Remote Practice Workflow
+
+**Note:** This is the inclass practice. Other other `md` file is not.
 
 This practice is designed to help you get familiar with basic Git operations (`add`, `commit`, `push`, `pull`), learn how to change remote repository addresses, and experience a collaborative workflow by alternating between your local computer and a remote workstation. Additionally, you will build and configure a Sphinx documentation project with Markdown support from scratch.
 
@@ -29,6 +31,8 @@ Since you have cloned a public course repository, you need to link it to your ow
    # Add your own repository as the new origin
    git remote add origin <YOUR-NEW-REPOSITORY-URL(HTTP/SSH)>
    ```
+
+   **Note:** you need to distinguish between `ssh` and `https` connection (Ask AI or search online for more details). You clone the repository via `https` from the gitlab, then you need to decide whether to use `http` or `ssh`. If you use `ssh`, you nned to generate a local public key and upload to your new remote.
 
 ## Task 2: Local Environment Initialization & First Commit
 
