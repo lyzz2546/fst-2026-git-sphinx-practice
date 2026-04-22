@@ -16,6 +16,9 @@ author = 'Yang'
 extensions = [
     'myst_parser',
 ]
+
+myst_heading_anchors = 3
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
