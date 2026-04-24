@@ -15,3 +15,6 @@ This project is a static personal website built using:
 - docs-web/ → Website source files
 - practice/ → Course practice materials
 
+## 🌐 Website
+
+👉 https://lyzz2546.github.io/fst-2026-git-sphinx-practice/
