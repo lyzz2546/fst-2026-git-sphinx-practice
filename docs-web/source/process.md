@@ -109,6 +109,18 @@ Main updates:
 - Organized Assignment 1 under the Assignments section.
 - Made the website structure closer to the intended folder-style organization.
 
+#### Version 3: Website Structure Improvement
+
+Used Git to manage version control and deployed the static website via GitHub Pages.
+
+#### Version 4: Website Structure Improvement
+
+Initially create a version of the page using sphinx
+
+#### Version 5: Website Structure Improvement
+
+Change the theme to use furo
+
 #### Future Updates
 
 Future updates will follow the same format:

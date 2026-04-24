@@ -10,6 +10,8 @@ This assignment includes a matrix multiplication project implemented in Python, 
 
 ## Assignment 2
 
+[View Assignment 2 Process](process)
+
 This website is developed as Assignment 2 using Sphinx and Markdown.
 
 It demonstrates the process of building a static documentation website, managing the project with Git, and organizing content into structured pages.
