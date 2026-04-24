@@ -9,11 +9,11 @@ My Personal Website
 Welcome to my static personal website built with Sphinx.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
    about
    assignments
    process
    contact
-   assignment_1
+
