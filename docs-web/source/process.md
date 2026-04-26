@@ -88,18 +88,25 @@ Each commit represents a meaningful update, such as adding pages, fixing structu
 #### Version 1: Initial Website Setup
 
 The first version focused on building the basic structure of the website.  
-In this version, the Sphinx project was initialized, the main pages were created, and Assignment 1 was added to the website.
+In this version, the Sphinx project was initialized, the main pages were created.
 
 Main updates:
 
 - Built the initial Sphinx-based static website.
 - Added basic pages such as About, Assignments, Process, and Contact.
-- Integrated Assignment 1 into the website.
 
 #### Version 2: Website Structure Improvement
 
-The second version focused on improving the page organization and navigation structure.  
-In the first version, Assignment 1 also appeared directly on the main page navigation, which made the website structure less clear.  
+Assignment 1 was added to the website.
+
+Main updates:
+
+- Integrated Assignment 1 into the website.
+
+#### Version 3: Website Structure Improvement
+
+The third version focused on improving the page organization and navigation structure.  
+In the second version, Assignment 1 also appeared directly on the main page navigation, which made the website structure less clear.  
 This version adjusted the navigation format so that Assignment 1 can be accessed through the Assignments page instead of being displayed separately on the homepage.
 
 Main updates:
@@ -109,17 +116,13 @@ Main updates:
 - Organized Assignment 1 under the Assignments section.
 - Made the website structure closer to the intended folder-style organization.
 
-#### Version 3: Website Structure Improvement
+#### Version 4: Website Structure Improvement
 
 Used Git to manage version control and deployed the static website via GitHub Pages.
 
-#### Version 4: Website Structure Improvement
-
-Initially create a version of the page using sphinx
-
 #### Version 5: Website Structure Improvement
 
-Change the theme to use furo
+Initially create a version of the page using sphinx
 
 #### Future Updates
 
