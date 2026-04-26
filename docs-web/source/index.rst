@@ -14,5 +14,4 @@ Welcome to my static personal website built with Sphinx.
 
    about
    assignments
-   process
    contact
