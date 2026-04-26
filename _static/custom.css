@@ -1,0 +1,36 @@
+body {
+    background: #dff3ff !important;
+}
+
+/* 整体页面宽度 */
+div.document {
+    width: 1100px !important;
+    margin: 30px auto !important;
+}
+
+/* 左侧导航栏 */
+div.sphinxsidebar {
+    width: 240px !important;
+    background: #f3f7ff !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+}
+
+/* 主内容区域：关键是留出左侧栏宽度 */
+div.bodywrapper {
+    margin-left: 280px !important;
+}
+
+div.body {
+    background: #ffffff !important;
+    padding: 30px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    min-height: 420px !important;
+}
+
+/* 页脚 */
+div.footer {
+    color: #666 !important;
+}

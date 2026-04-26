@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Process &#8212; Git Practice Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=7a2d700d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="process">
+<h1>Process<a class="headerlink" href="#process" title="Link to this heading">¶</a></h1>
+<p>This page records the complete process of building and deploying this Sphinx-based static personal website.</p>
+<hr class="docutils" />
+<section id="objective">
+<h2>1. Objective<a class="headerlink" href="#objective" title="Link to this heading">¶</a></h2>
+<p>The goal of this assignment was to create and deploy a static personal website using Sphinx, Markdown, Git, and GitHub.<br />
+The website serves as a platform to present course assignments, including Assignment 1, in a structured and readable format.</p>
+</section>
+<hr class="docutils" />
+<section id="website-setup-and-development">
+<h2>2. Website Setup and Development<a class="headerlink" href="#website-setup-and-development" title="Link to this heading">¶</a></h2>
+<p>I used <strong>Sphinx</strong> as the static site generator and Markdown for writing content.</p>
+<section id="steps-followed">
+<h3>Steps followed:<a class="headerlink" href="#steps-followed" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Created a GitHub repository for the project.</p></li>
+<li><p>Initialized a local Git project and linked it to the remote repository.</p></li>
+<li><p>Created a Sphinx documentation project using:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sphinx-quickstart
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Generated the basic project structure:</p>
+<ul class="simple">
+<li><p>docs-web/source</p></li>
+<li><p>conf.py</p></li>
+<li><p>index.rst</p></li>
+<li><p>Makefile / make.bat</p></li>
+</ul>
+</li>
+<li><p>Enabled Markdown support by installing MyST parser:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>myst-parser
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Updated conf.py to support Markdown files:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;myst_parser&#39;</span><span class="p">]</span>
+
+<span class="n">source_suffix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;.rst&#39;</span><span class="p">:</span> <span class="s1">&#39;restructuredtext&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;.md&#39;</span><span class="p">:</span> <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Created multiple Markdown pages:</p>
+<ul class="simple">
+<li><p>about.md</p></li>
+<li><p>assignments.md</p></li>
+<li><p>assignment_1.md</p></li>
+<li><p>process.md</p></li>
+<li><p>contact.md</p></li>
+</ul>
+</li>
+<li><p>Configured navigation structure in index.rst using toctree.</p></li>
+<li><p>Built the website locally:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li><p>Verified the generated HTML pages in:</p></li>
+</ol>
+<p>docs-web/build/html/index.html</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="git-version-control">
+<h2>3. Git Version Control<a class="headerlink" href="#git-version-control" title="Link to this heading">¶</a></h2>
+<p>Git was used to track changes and manage the development process.</p>
+<p>Typical workflow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>-A
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;update website content&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>Each commit represents a meaningful update, such as adding pages, fixing structure, or improving content.</p>
+<section id="version-update-log">
+<h3>Version Update Log<a class="headerlink" href="#version-update-log" title="Link to this heading">¶</a></h3>
+<section id="version-1-initial-website-setup">
+<h4>Version 1: Initial Website Setup<a class="headerlink" href="#version-1-initial-website-setup" title="Link to this heading">¶</a></h4>
+<p>The first version focused on building the basic structure of the website.<br />
+In this version, the Sphinx project was initialized, the main pages were created.</p>
+<p>Main updates:</p>
+<ul class="simple">
+<li><p>Built the initial Sphinx-based static website.</p></li>
+<li><p>Added basic pages such as About, Assignments, Process, and Contact.</p></li>
+</ul>
+</section>
+<section id="version-2-website-structure-improvement">
+<h4>Version 2: Website Structure Improvement<a class="headerlink" href="#version-2-website-structure-improvement" title="Link to this heading">¶</a></h4>
+<p>Assignment 1 was added to the website.</p>
+<p>Main updates:</p>
+<ul class="simple">
+<li><p>Integrated Assignment 1 into the website.</p></li>
+</ul>
+</section>
+<section id="version-3-website-structure-improvement">
+<h4>Version 3: Website Structure Improvement<a class="headerlink" href="#version-3-website-structure-improvement" title="Link to this heading">¶</a></h4>
+<p>The third version focused on improving the page organization and navigation structure.<br />
+In the second version, Assignment 1 also appeared directly on the main page navigation, which made the website structure less clear.<br />
+This version adjusted the navigation format so that Assignment 1 can be accessed through the Assignments page instead of being displayed separately on the homepage.</p>
+<p>Main updates:</p>
+<ul class="simple">
+<li><p>Modified the website navigation structure.</p></li>
+<li><p>Improved the display format of the homepage.</p></li>
+<li><p>Organized Assignment 1 under the Assignments section.</p></li>
+<li><p>Made the website structure closer to the intended folder-style organization.</p></li>
+</ul>
+</section>
+<section id="version-4-website-structure-improvement">
+<h4>Version 4: Website Structure Improvement<a class="headerlink" href="#version-4-website-structure-improvement" title="Link to this heading">¶</a></h4>
+<p>Used Git to manage version control and deployed the static website via GitHub Pages.</p>
+</section>
+<section id="version-5-website-structure-improvement">
+<h4>Version 5: Website Structure Improvement<a class="headerlink" href="#version-5-website-structure-improvement" title="Link to this heading">¶</a></h4>
+<p>Initially create a version of the page using sphinx</p>
+</section>
+<section id="future-updates">
+<h4>Future Updates<a class="headerlink" href="#future-updates" title="Link to this heading">¶</a></h4>
+<p>Future updates will follow the same format:</p>
+<ul class="simple">
+<li><p>Version number</p></li>
+<li><p>Update objective</p></li>
+<li><p>Main changes</p></li>
+<li><p>Brief explanation of the improvement</p></li>
+</ul>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="integration-of-previous-work">
+<h2>4. Integration of Previous Work<a class="headerlink" href="#integration-of-previous-work" title="Link to this heading">¶</a></h2>
+<p>Assignment 1 was integrated into the website as a separate page.</p>
+<p>It includes:</p>
+<ul class="simple">
+<li><p>Complete report written in Markdown</p></li>
+<li><p>Python implementation of matrix multiplication</p></li>
+<li><p>System configuration details</p></li>
+<li><p>Algorithm verification and conclusion</p></li>
+</ul>
+<p>The page is linked in the Assignments section for easy navigation.</p>
+</section>
+<hr class="docutils" />
+<section id="tools-and-technologies-used">
+<h2>5. Tools and Technologies Used<a class="headerlink" href="#tools-and-technologies-used" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Sphinx — static site generator</p></li>
+<li><p>MyST Parser — Markdown support in Sphinx</p></li>
+<li><p>Markdown — content writing</p></li>
+<li><p>Git — version control</p></li>
+<li><p>GitHub — remote repository hosting</p></li>
+<li><p>VS Code — code editing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="challenges-and-learnings">
+<h2>6. Challenges and Learnings<a class="headerlink" href="#challenges-and-learnings" title="Link to this heading">¶</a></h2>
+<p>During the development process, several challenges were encountered:</p>
+<ul class="simple">
+<li><p>Understanding how Sphinx handles Markdown and navigation</p></li>
+<li><p>Configuring toctree correctly to include all pages</p></li>
+<li><p>Fixing warnings related to missing document titles</p></li>
+<li><p>Learning how static site generation works</p></li>
+</ul>
+<p>These issues helped deepen my understanding of:</p>
+<ul class="simple">
+<li><p>Documentation systems</p></li>
+<li><p>Static website workflows</p></li>
+<li><p>Project organization using Git</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conclusion">
+<h2>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>This assignment helped me learn how to:</p>
+<ul class="simple">
+<li><p>Build a static website using Sphinx</p></li>
+<li><p>Organize technical content using Markdown</p></li>
+<li><p>Manage a project with Git and GitHub</p></li>
+<li><p>Integrate previous assignments into a structured website</p></li>
+</ul>
+<p>It provided practical experience in documentation and software tools commonly used in development projects.</p>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h2>8. References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Sphinx Documentation: https://www.sphinx-doc.org/</p></li>
+<li><p>MyST Parser: https://myst-parser.readthedocs.io/</p></li>
+<li><p>Markdown Guide: https://www.markdownguide.org/</p></li>
+<li><p>Git Documentation: https://git-scm.com/docs</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Git Practice Docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Yang.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/process.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

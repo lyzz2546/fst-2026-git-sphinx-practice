@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matrix Multiplication Project Report &#8212; Git Practice Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=7a2d700d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="matrix-multiplication-project-report">
+<h1>Matrix Multiplication Project Report<a class="headerlink" href="#matrix-multiplication-project-report" title="Link to this heading">¶</a></h1>
+<p><strong>Student Name</strong>: Yang Zhanxiang
+<strong>Student ID</strong>: ZY2557211
+<strong>Submission Date</strong>: 2026.3.21</p>
+<section id="system-configuration">
+<h2>System Configuration<a class="headerlink" href="#system-configuration" title="Link to this heading">¶</a></h2>
+<p>List your system configuration as <strong>table of content here</strong> here, including CPU model, memory size, operating system version, compiler version, python version.</p>
+<p>For Linux, check</p>
+<ul class="simple">
+<li><p><strong>CPU Model</strong>: Intel(R) Core(TM) i9-14900HX</p></li>
+<li><p><strong>Memory Size</strong>: 15 GB</p></li>
+<li><p><strong>Operating System Version</strong>: Linux (WSL2), Kernel 6.6.87.2</p></li>
+<li><p><strong>Compiler Version</strong>: GCC 13.3.0</p></li>
+<li><p><strong>Python Version</strong>: Python 3.12.3</p></li>
+</ul>
+</section>
+<section id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
+<section id="python-language-implementation">
+<h3>Python Language Implementation<a class="headerlink" href="#python-language-implementation" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Source Code</strong>: Include the Python script with comments explaining key sections.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># matrix.py</span>
+<span class="c1"># Matrix multiplication </span>
+
+<span class="c1"># Input dimensions (same as C: one line, two numbers)</span>
+<span class="n">rowA</span><span class="p">,</span> <span class="n">colA</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter rows and columns of matrix A: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="n">rowB</span><span class="p">,</span> <span class="n">colB</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter rows and columns of matrix B: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+
+<span class="c1"># Check validity</span>
+<span class="k">if</span> <span class="n">colA</span> <span class="o">!=</span> <span class="n">rowB</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix multiplication is not possible.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The number of columns of A must equal the number of rows of B.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+
+<span class="c1"># Input matrix A</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enter elements of matrix A (</span><span class="si">{</span><span class="n">rowA</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">colA</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowA</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Enter elements of row </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+    <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Input matrix B</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Enter elements of matrix B (</span><span class="si">{</span><span class="n">rowB</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">colB</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowB</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Enter elements of row </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+    <span class="n">B</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Initialize result matrix</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colB</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowA</span><span class="p">)]</span>
+
+<span class="c1"># Matrix multiplication</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowA</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colB</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colA</span><span class="p">):</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+
+<span class="c1"># Print result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Result matrix C = A x B:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">C</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Execution Command</strong>: Describe how to run the Python script.
+The Python script is executed using the following command:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>matrix.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="algorithm-verification">
+<h2>Algorithm Verification<a class="headerlink" href="#algorithm-verification" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Correctness</strong>: Explain the methodology used to verify the correctness of the matrix multiplication algorithm.
+The correctness of the matrix multiplication algorithm was verified by using a small test case and comparing the output with manual calculation.</p></li>
+</ul>
+<p>For example, matrix A was set as:
+1 2 3
+4 5 6</p>
+<p>Matrix B was set as:
+7 8
+9 10
+11 12</p>
+<p>By manual calculation, the result should be:
+58 64
+139 154</p>
+<p>The outputs of both the C program and the Python program were consistent with the expected result. This shows that the algorithm works correctly.</p>
+<p>In addition, the program checks whether the number of columns of matrix A equals the number of rows of matrix B before multiplication. If the dimensions are incompatible, the program reports an error message. This further helps ensure correctness.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>Summarize the findings of the project, including key learnings about command line operations, Markdown documentation, and programming language differences.</p>
+</div></blockquote>
+<p>In this project, matrix multiplication was implemented using both C and Python, and the performance of the two implementations was compared.</p>
+<p>Through this project, I gained practical experience with command line operations, including compiling and running programs using GCC and executing Python scripts. I also learned how to use Markdown to create structured and readable technical documentation.</p>
+<p>In terms of programming, both implementations used the same matrix multiplication algorithm based on three nested loops. However, the performance analysis showed that the C implementation is significantly faster than the Python implementation. This is mainly due to the differences in execution models, memory management, and data handling between compiled and interpreted languages.</p>
+<p>Overall, this project helped me better understand the relationship between algorithm design and programming language characteristics, as well as the trade-offs between performance and ease of development.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<blockquote>
+<div><p>List any resources or references used during the project, including documentation, tutorials, and external libraries.</p>
+</div></blockquote>
+<p>The following resources were consulted during the project:</p>
+<ul class="simple">
+<li><p>GCC Official Documentation: https://gcc.gnu.org/</p></li>
+<li><p>Python Official Documentation: https://docs.python.org/3/</p></li>
+<li><p>Markdown Guide: https://www.markdownguide.org/</p></li>
+<li><p>Stack Overflow: https://stackoverflow.com/</p></li>
+</ul>
+</section>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><strong>Additional Notes</strong>: Include any additional notes or observations made during the project.</p></li>
+</ul>
+<p>During the implementation, it was observed that the execution time of Python increased rapidly as the matrix size grew, while the C implementation remained relatively efficient. This highlights the performance advantage of compiled languages in computation-intensive tasks.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Git Practice Docs</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Yang.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/assignment_1.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
