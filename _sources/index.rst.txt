@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-My Personal Website
-===================
+Yang Zhanxiang's Coursework Site
+================================
 
-Welcome to my static personal website built with Sphinx.
+A Sphinx-based personal website for the Fundamentals of Software Technology course.
 
 .. toctree::
    :maxdepth: 1
@@ -15,3 +15,10 @@ Welcome to my static personal website built with Sphinx.
    about
    assignments
    contact
+
+.. toctree::
+   :hidden:
+
+   assignment_1
+   assignment_3
+   process

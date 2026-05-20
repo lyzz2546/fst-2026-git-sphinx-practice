@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Assignment 3: Deployment and Integration of AI Agents &#8212; Git Practice Docs  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=8d9d6f90" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Process" href="process.html" />
+    <link rel="prev" title="Matrix Multiplication Project Report" href="assignment_1.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="assignment-3-deployment-and-integration-of-ai-agents">
+<h1>Assignment 3: Deployment and Integration of AI Agents<a class="headerlink" href="#assignment-3-deployment-and-integration-of-ai-agents" title="Link to this heading">¶</a></h1>
+<p><strong>Student Name</strong>: Yang Zhanxiang<br />
+<strong>Student ID</strong>: ZY2557211<br />
+<strong>Submission Date</strong>: 2026.5.29</p>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">¶</a></h2>
+<p>The goal of this assignment is to deploy and test AI agents in different environments. I tested an online model API, a local model through Ollama, and an AI assistant integrated into VS Code.</p>
+</section>
+<section id="online-agent">
+<h2>1. Online Agent<a class="headerlink" href="#online-agent" title="Link to this heading">¶</a></h2>
+<section id="tools-used">
+<h3>Tools Used<a class="headerlink" href="#tools-used" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>API provider: Alibaba Cloud Model Studio</p></li>
+<li><p>Online model: Qwen Plus</p></li>
+<li><p>Script: <code class="docutils literal notranslate"><span class="pre">online_file_agent.py</span></code></p></li>
+<li><p>Task: Analyze a Markdown file and answer a specific question</p></li>
+</ul>
+</section>
+<section id="setup-and-process">
+<h3>Setup and Process<a class="headerlink" href="#setup-and-process" title="Link to this heading">¶</a></h3>
+<p>First, I created an API key in Alibaba Cloud Model Studio. The API key was not shown completely in the screenshot for security reasons.</p>
+<a class="reference internal image-reference" href="_images/online-api-key-masked.png"><img alt="Masked Alibaba Cloud API key page" src="_images/online-api-key-masked.png" style="width: 720px;" />
+</a>
+<p>I also checked that Qwen-related models were available in my account.</p>
+<a class="reference internal image-reference" href="_images/online-model-usage.png"><img alt="Alibaba Cloud model usage page" src="_images/online-model-usage.png" style="width: 720px;" />
+</a>
+<p>Then I wrote a Python script to use the OpenAI-compatible API of Alibaba Cloud. The script reads a Markdown file, sends its content and a question to the Qwen model, and prints the model response.</p>
+<p>The main steps of the script are:</p>
+<ul class="simple">
+<li><p>Read the API key from the <code class="docutils literal notranslate"><span class="pre">DASHSCOPE_API_KEY</span></code> environment variable.</p></li>
+<li><p>Read the target Markdown file with UTF-8 encoding.</p></li>
+<li><p>Send the file content and question to the <code class="docutils literal notranslate"><span class="pre">qwen-plus</span></code> model.</p></li>
+<li><p>Print the answer returned by the online model.</p></li>
+</ul>
+<p>I ran the script with this command:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">python</span><span class="p">.</span><span class="n">exe</span> <span class="n">online_file_agent</span><span class="p">.</span><span class="n">py</span> <span class="n">docs-web</span><span class="p">\</span><span class="n">source</span><span class="p">\</span><span class="n">assignment_1</span><span class="p">.</span><span class="nb">md </span><span class="s2">&quot;Summarize this report and list its main technical points.&quot;</span>
+</pre></div>
+</div>
+<p>The result shows that the online agent successfully analyzed <code class="docutils literal notranslate"><span class="pre">assignment_1.md</span></code> and summarized the report.</p>
+<a class="reference internal image-reference" href="_images/online-agent-command-result-1.png"><img alt="Online agent command result first screenshot" src="_images/online-agent-command-result-1.png" style="width: 720px;" />
+</a>
+<a class="reference internal image-reference" href="_images/online-agent-command-result-2.png"><img alt="Online agent command result second screenshot" src="_images/online-agent-command-result-2.png" style="width: 720px;" />
+</a>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h3>
+<p>The online model was easy to use after the API key and Python dependency were configured. One small issue was that Windows command line output had an encoding problem, so I added UTF-8 output configuration in the script.</p>
+</section>
+</section>
+<section id="local-model-deployment">
+<h2>2. Local Model Deployment<a class="headerlink" href="#local-model-deployment" title="Link to this heading">¶</a></h2>
+<section id="id1">
+<h3>Tools Used<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Tool: Ollama</p></li>
+<li><p>Local model: <code class="docutils literal notranslate"><span class="pre">qwen3:8b</span></code></p></li>
+<li><p>Interface: Ollama desktop UI and local server</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Setup and Process<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>I installed Ollama on my computer and selected <code class="docutils literal notranslate"><span class="pre">qwen3:8b</span></code> as the local model.</p>
+<a class="reference internal image-reference" href="_images/ollama-model-list.png"><img alt="Ollama model list" src="_images/ollama-model-list.png" style="width: 720px;" />
+</a>
+<p>I also checked that the Ollama local server was running at <code class="docutils literal notranslate"><span class="pre">localhost:11434</span></code>.</p>
+<a class="reference internal image-reference" href="_images/ollama-local-server-running.png"><img alt="Ollama local server running" src="_images/ollama-local-server-running.png" style="width: 520px;" />
+</a>
+<p>After that, I tested a basic interaction with the local model in the Ollama interface.</p>
+<a class="reference internal image-reference" href="_images/ollama-chat-result.png"><img alt="Ollama local model chat result" src="_images/ollama-chat-result.png" style="width: 720px;" />
+</a>
+</section>
+<section id="id3">
+<h3>Notes<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>The local model can answer questions without using an online API. This is useful for privacy and local testing. However, compared with the online model, the local model may depend more on the computer’s hardware and may respond more slowly for larger tasks.</p>
+</section>
+</section>
+<section id="ide-integration">
+<h2>3. IDE Integration<a class="headerlink" href="#ide-integration" title="Link to this heading">¶</a></h2>
+<section id="id4">
+<h3>Tools Used<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>IDE: Visual Studio Code</p></li>
+<li><p>Extension: Continue</p></li>
+<li><p>Model provider: Ollama</p></li>
+<li><p>Model: <code class="docutils literal notranslate"><span class="pre">qwen3:8b</span></code></p></li>
+<li><p>Task: Explain a Python script inside the coding environment</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Setup and Process<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>I installed the Continue extension in VS Code.</p>
+<a class="reference internal image-reference" href="_images/vscode-continue-installed.png"><img alt="Continue extension installed in VS Code" src="_images/vscode-continue-installed.png" style="width: 720px;" />
+</a>
+<p>Then I opened my course project folder in VS Code.</p>
+<a class="reference internal image-reference" href="_images/vscode-project-opened.png"><img alt="Course project opened in VS Code" src="_images/vscode-project-opened.png" style="width: 720px;" />
+</a>
+<p>I configured Continue to use the local Ollama model. The configuration used <code class="docutils literal notranslate"><span class="pre">provider:</span> <span class="pre">ollama</span></code>, <code class="docutils literal notranslate"><span class="pre">model:</span> <span class="pre">qwen3:8b</span></code>, and <code class="docutils literal notranslate"><span class="pre">apiBase:</span> <span class="pre">http://localhost:11434</span></code>.</p>
+<a class="reference internal image-reference" href="_images/vscode-continue-ollama-config.png"><img alt="Continue configured with Ollama and qwen3 8B" src="_images/vscode-continue-ollama-config.png" style="width: 720px;" />
+</a>
+<p>Finally, I opened <code class="docutils literal notranslate"><span class="pre">online_file_agent.py</span></code> and asked Continue to explain how the script reads a Markdown file and calls the Qwen online model API.</p>
+<a class="reference internal image-reference" href="_images/vscode-ai-explain-code.png"><img alt="Continue explaining Python code in VS Code" src="_images/vscode-ai-explain-code.png" style="width: 720px;" />
+</a>
+</section>
+<section id="id6">
+<h3>Notes<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>This shows how an AI assistant can be integrated directly into the development environment. It is more convenient than using a separate chat window because the assistant can work with the current project and code file.</p>
+</section>
+</section>
+<section id="reflection">
+<h2>4. Reflection<a class="headerlink" href="#reflection" title="Link to this heading">¶</a></h2>
+<section id="online-model">
+<h3>Online Model<a class="headerlink" href="#online-model" title="Link to this heading">¶</a></h3>
+<p>The online Qwen model was convenient and gave a detailed answer. It was suitable for file analysis and summarization. The main requirement was configuring the API key correctly.</p>
+</section>
+<section id="local-model">
+<h3>Local Model<a class="headerlink" href="#local-model" title="Link to this heading">¶</a></h3>
+<p>Ollama made it possible to run a model locally. This is useful when I want to test simple prompts without relying on an online service. The limitation is that the performance depends on the local computer.</p>
+</section>
+<section id="id7">
+<h3>IDE Integration<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>The VS Code and Continue integration was useful because I could ask questions while looking at the source code. It helped me understand the structure of <code class="docutils literal notranslate"><span class="pre">online_file_agent.py</span></code> and how the API call was organized.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">¶</a></h2>
+<p>In this assignment, I learned how to use an online model API, deploy a local model with Ollama, and integrate an AI assistant into VS Code. The online model was stronger for detailed analysis, while the local model was easier to use privately. IDE integration was helpful for understanding and improving code during development.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Git Practice Docs</a></h1>
+
+
+
+<p class="blurb">Fundamentals of Software Technology coursework</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="assignment_1.html" title="previous chapter">Matrix Multiplication Project Report</a></li>
+      <li>Next: <a href="process.html" title="next chapter">Process</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Yang.
+      
+      |
+      <a href="_sources/assignment_3.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
