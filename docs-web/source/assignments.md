@@ -20,7 +20,7 @@ It demonstrates the process of building a static documentation website, managing
 
 ## Assignment 3
 
-[View Assignment 3 Report Template](assignment_3)
+[View Assignment 3 Report](assignment_3)
 
 This assignment records the deployment and comparison of online and local AI agents, including screenshots and personal reflections.
 
