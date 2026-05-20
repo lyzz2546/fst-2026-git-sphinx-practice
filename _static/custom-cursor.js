@@ -55,7 +55,7 @@
             if (lastX !== null) {
                 var dx = event.clientX - lastX;
                 if (Math.abs(dx) > 1) {
-                    direction = dx < 0 ? -1 : 1;
+                    direction = dx < 0 ? 1 : -1;
                 }
             }
 
