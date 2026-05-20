@@ -9,10 +9,6 @@
     --shadow: 0 24px 70px rgba(49, 96, 133, 0.2);
 }
 
-html {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%230b4778' stroke-width='1.8' stroke-linejoin='round'%3E%3Cpath fill='%23ffffff' d='M3 16.5 28 6.5 21.5 16.3 28 25.5z'/%3E%3Cpath fill='%238bd1ff' d='M9.5 15.6 22 12.1 16.7 17.1z'/%3E%3Cpath d='M15.8 17.2 11.3 26.2 18.8 19.1M14.3 14.1 8.4 7.2 17.9 12.2'/%3E%3C/g%3E%3C/svg%3E") 3 3, auto;
-}
-
 body {
     margin: 0;
     background:
@@ -22,6 +18,41 @@ body {
     color: var(--ink);
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     line-height: 1.68;
+}
+
+html.c919-cursor-active,
+html.c919-cursor-active * {
+    cursor: none !important;
+}
+
+.c919-cursor {
+    filter: drop-shadow(0 5px 8px rgba(16, 61, 94, 0.28));
+    height: 34px;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transform: translate3d(-80px, -80px, 0);
+    transition: opacity 120ms ease;
+    width: 56px;
+    z-index: 2147483647;
+}
+
+.c919-cursor.is-visible {
+    opacity: 1;
+}
+
+.c919-cursor svg {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+@media (pointer: coarse) {
+    .c919-cursor {
+        display: none;
+    }
 }
 
 a,
