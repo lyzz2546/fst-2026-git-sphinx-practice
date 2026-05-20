@@ -34,6 +34,7 @@ exclude_patterns = []
 html_theme = "alabaster"
 html_static_path = ['_static']
 html_css_files = ['custom.css']
+html_js_files = ['custom-cursor.js']
 html_theme_options = {
     'description': 'Fundamentals of Software Technology coursework',
     'sidebar_includehidden': False,
