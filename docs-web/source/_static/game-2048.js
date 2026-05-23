@@ -13,6 +13,7 @@
     var overlayNode = document.getElementById("game2048-overlay");
     var overlayTitleNode = document.getElementById("game2048-overlay-title");
     var keepGoingButton = document.getElementById("game2048-keep-going");
+    var undoButton = document.getElementById("game2048-undo");
     var newButton = document.getElementById("game2048-new");
     var retryButton = document.getElementById("game2048-try-again");
     var tileLayerNode = null;
@@ -24,6 +25,8 @@
     var over = false;
     var inputLocked = false;
     var touchStart = null;
+    var undoSnapshot = null;
+    var undoUsed = false;
 
     function loadBest() {
         try {
@@ -146,6 +149,44 @@
         overlayNode.classList.remove("is-hidden");
     }
 
+    function updateUndoButton() {
+        undoButton.disabled = undoUsed || !undoSnapshot || inputLocked;
+        undoButton.textContent = undoUsed ? "Undo Used" : "Undo (1)";
+    }
+
+    function copyGrid(source) {
+        return source.map(function (row) {
+            return row.slice();
+        });
+    }
+
+    function saveUndoSnapshot() {
+        undoSnapshot = {
+            grid: copyGrid(grid),
+            score: score,
+            won: won,
+            keepPlaying: keepPlaying,
+            over: over
+        };
+        updateUndoButton();
+    }
+
+    function undoMove() {
+        if (inputLocked || undoUsed || !undoSnapshot) {
+            return;
+        }
+        grid = copyGrid(undoSnapshot.grid);
+        score = undoSnapshot.score;
+        won = undoSnapshot.won;
+        keepPlaying = undoSnapshot.keepPlaying;
+        over = undoSnapshot.over;
+        undoUsed = true;
+        undoSnapshot = null;
+        hideOverlay();
+        renderTiles({});
+        updateUndoButton();
+    }
+
     function startGame() {
         grid = freshGrid();
         score = 0;
@@ -153,9 +194,12 @@
         keepPlaying = false;
         over = false;
         inputLocked = false;
+        undoSnapshot = null;
+        undoUsed = false;
         var startPositions = [addRandomTile(), addRandomTile()].filter(Boolean);
         hideOverlay();
         renderTiles({ newPositions: startPositions });
+        updateUndoButton();
     }
 
     function getPosition(direction, lineIndex, offset) {
@@ -250,6 +294,7 @@
                 mergedPositions: result.mergedPositions
             });
             inputLocked = false;
+            updateUndoButton();
 
             if (!won && grid.some(function (row) {
                 return row.some(function (value) {
@@ -276,7 +321,11 @@
         if (!result.changed) {
             return;
         }
+        if (!undoUsed) {
+            saveUndoSnapshot();
+        }
         inputLocked = true;
+        updateUndoButton();
         animateMove(result);
     }
 
@@ -345,6 +394,7 @@
 
     newButton.addEventListener("click", startGame);
     retryButton.addEventListener("click", startGame);
+    undoButton.addEventListener("click", undoMove);
 
     setupBoard();
     startGame();

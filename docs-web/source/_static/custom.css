@@ -923,6 +923,7 @@ html.air-battle-page div.body {
 
 .game2048-actions {
     display: flex;
+    gap: 10px;
     justify-content: flex-end;
     margin: 16px 0 12px;
 }
@@ -942,6 +943,20 @@ html.air-battle-page div.body {
 .game2048-actions button:hover,
 .game2048-overlay button:hover {
     background: #776658;
+}
+
+.game2048-actions .game2048-undo {
+    background: #d7c8ba;
+    color: #62574e;
+}
+
+.game2048-actions .game2048-undo:hover:not(:disabled) {
+    background: #c7b6a7;
+}
+
+.game2048-actions button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.54;
 }
 
 .game2048-board-wrap {
