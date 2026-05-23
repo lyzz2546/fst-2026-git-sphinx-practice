@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About Me &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
+    <title>Minesweeper &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=5cff928c" />
@@ -13,11 +13,11 @@
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/custom-cursor.js?v=58aa8f5d"></script>
-    <link rel="author" title="About these documents" href="#" />
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignments" href="assignments.html" />
-    <link rel="prev" title="Yang Zhanxiang’s Coursework Site" href="index.html" />
+    <link rel="next" title="2048" href="game_2048.html" />
+    <link rel="prev" title="Air Battle" href="air_battle.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,11 +35,27 @@
 
           <div class="body" role="main">
             
-  <section id="about-me">
-<h1>About Me<a class="headerlink" href="#about-me" title="Link to this heading">¶</a></h1>
-<p>My name is Yang Zhanxiang
-I am a master’s student at Beihang University
-My interests include football and games.</p>
+  <section id="minesweeper">
+<h1>Minesweeper<a class="headerlink" href="#minesweeper" title="Link to this heading">¶</a></h1>
+<section class="minesweeper-shell">
+  <div class="minesweeper-toolbar" aria-label="Minesweeper controls">
+    <div class="minesweeper-difficulty" role="group" aria-label="Difficulty">
+      <button class="is-active" type="button" data-level="beginner">Beginner (9 x 9)</button>
+      <button type="button" data-level="intermediate">Intermediate (16 x 16)</button>
+      <button type="button" data-level="expert">Expert (16 x 30)</button>
+    </div>
+    <div class="minesweeper-status">
+      <span class="minesweeper-counter" id="mine-counter">010</span>
+      <button class="minesweeper-face" id="minesweeper-reset" type="button" aria-label="Restart">:)</button>
+      <span class="minesweeper-counter" id="mine-timer">000</span>
+    </div>
+  </div>
+  <div class="minesweeper-board-wrap">
+    <div class="minesweeper-board" id="minesweeper-board" aria-label="Minesweeper board"></div>
+  </div>
+  <p class="minesweeper-message" id="minesweeper-message">Left click to reveal. Right click to place a flag. Press both mouse buttons on a number to open safe neighbors.</p>
+</section>
+<script src="_static/minesweeper.js"></script>
 </section>
 
 
@@ -62,8 +78,8 @@ My interests include football and games.</p>
 
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">About Me</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
@@ -73,8 +89,8 @@ My interests include football and games.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Yang Zhanxiang’s Coursework Site</a></li>
-      <li>Next: <a href="assignments.html" title="next chapter">Assignments</a></li>
+      <li>Previous: <a href="air_battle.html" title="previous chapter">Air Battle</a></li>
+      <li>Next: <a href="game_2048.html" title="next chapter">2048</a></li>
   </ul></li>
 </ul>
 </div>
@@ -104,7 +120,7 @@ My interests include football and games.</p>
       &#169;2026, Yang.
       
       |
-      <a href="_sources/about.md.txt"
+      <a href="_sources/minesweeper.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

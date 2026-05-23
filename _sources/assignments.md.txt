@@ -1,31 +1,35 @@
 # Assignments
 
-## Assignment 1
+<section class="assignment-intro">
+  <p class="page-kicker">Course Reports</p>
+  <p>This page gathers the completed assignments and the website development process in one place.</p>
+</section>
 
-[View Assignment 1 Report](assignment_1)
+<section class="assignment-grid">
+  <article class="assignment-card">
+    <span class="card-status">Completed</span>
+    <h2>Assignment 1</h2>
+    <p>Matrix multiplication in Python, system configuration notes, and correctness verification.</p>
+    <a href="assignment_1.html">View Assignment 1 Report</a>
+  </article>
 
-This assignment includes a matrix multiplication project implemented in Python, along with system configuration, algorithm verification.
+  <article class="assignment-card">
+    <span class="card-status">Completed</span>
+    <h2>Assignment 2</h2>
+    <p>Sphinx website setup, Markdown organization, Git version control, and GitHub Pages deployment.</p>
+    <a href="process.html">View Assignment 2 Process</a>
+  </article>
 
----
+  <article class="assignment-card">
+    <span class="card-status">Completed</span>
+    <h2>Assignment 3</h2>
+    <p>Online Qwen API use, Ollama local model deployment, and AI integration in VS Code.</p>
+    <a href="assignment_3.html">View Assignment 3 Report</a>
+  </article>
 
-## Assignment 2
-
-[View Assignment 2 Process](process)
-
-This website is developed as Assignment 2 using Sphinx and Markdown.
-
-It demonstrates the process of building a static documentation website, managing the project with Git, and organizing content into structured pages.
-
----
-
-## Assignment 3
-
-[View Assignment 3 Report](assignment_3)
-
-This assignment records the deployment and comparison of online and local AI agents, including screenshots and personal reflections.
-
----
-
-## Assignment 4
-
-This assignment will be added in the future.
+  <article class="assignment-card assignment-card-muted">
+    <span class="card-status">Planned</span>
+    <h2>Assignment 4</h2>
+    <p>This section is reserved for future course work.</p>
+  </article>
+</section>

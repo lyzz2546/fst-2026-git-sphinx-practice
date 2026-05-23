@@ -1,0 +1,36 @@
+# 2048
+
+<section class="game2048-shell">
+  <div class="game2048-header">
+    <div>
+      <p class="page-kicker">Classic Puzzle</p>
+      <p class="game2048-goal">Join the tiles and reach <strong>2048</strong>.</p>
+    </div>
+    <div class="game2048-scoreboard" aria-label="Score">
+      <div class="game2048-score">
+        <span>Score</span>
+        <strong id="game2048-score">0</strong>
+      </div>
+      <div class="game2048-score">
+        <span>Best</span>
+        <strong id="game2048-best">0</strong>
+      </div>
+    </div>
+  </div>
+  <div class="game2048-actions">
+    <button id="game2048-new" type="button">New Game</button>
+  </div>
+  <div class="game2048-board-wrap">
+    <div class="game2048-board" id="game2048-board" aria-label="2048 board"></div>
+    <div class="game2048-overlay is-hidden" id="game2048-overlay">
+      <h2 id="game2048-overlay-title">You win!</h2>
+      <div class="game2048-overlay-actions">
+        <button id="game2048-keep-going" type="button">Keep Going</button>
+        <button id="game2048-try-again" type="button">Try Again</button>
+      </div>
+    </div>
+  </div>
+  <p class="game2048-message">Use the arrow keys or swipe to move the tiles.</p>
+</section>
+
+<script src="_static/game-2048.js"></script>

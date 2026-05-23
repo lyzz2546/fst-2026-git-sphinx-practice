@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>About Me &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
+    <title>Air Battle &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=5cff928c" />
@@ -13,11 +13,11 @@
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/custom-cursor.js?v=58aa8f5d"></script>
-    <link rel="author" title="About these documents" href="#" />
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignments" href="assignments.html" />
-    <link rel="prev" title="Yang Zhanxiang’s Coursework Site" href="index.html" />
+    <link rel="next" title="Minesweeper" href="minesweeper.html" />
+    <link rel="prev" title="Assignment 3: Deployment and Integration of AI Agents" href="assignment_3.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,11 +35,35 @@
 
           <div class="body" role="main">
             
-  <section id="about-me">
-<h1>About Me<a class="headerlink" href="#about-me" title="Link to this heading">¶</a></h1>
-<p>My name is Yang Zhanxiang
-I am a master’s student at Beihang University
-My interests include football and games.</p>
+  <section id="air-battle">
+<h1>Air Battle<a class="headerlink" href="#air-battle" title="Link to this heading">¶</a></h1>
+<section class="air-battle-shell">
+  <div class="air-battle-toolbar" aria-label="Air Battle status">
+    <div class="air-battle-stat">
+      <span>Score</span>
+      <strong id="air-battle-score">0</strong>
+    </div>
+    <div class="air-battle-stat">
+      <span>Hull</span>
+      <strong id="air-battle-hull">3</strong>
+    </div>
+    <div class="air-battle-stat">
+      <span>Wave</span>
+      <strong id="air-battle-wave">1</strong>
+    </div>
+    <button id="air-battle-restart" type="button">Restart</button>
+  </div>
+  <div class="air-battle-stage">
+    <canvas id="air-battle-canvas" aria-label="Air Battle game canvas"></canvas>
+    <div class="air-battle-hint" id="air-battle-hint">Hold the left mouse button to shoot</div>
+    <div class="air-battle-overlay" id="air-battle-overlay">
+      <p class="page-kicker">Air Battle</p>
+      <h2>Sky patrol ready</h2>
+      <button id="air-battle-start" type="button">Start</button>
+    </div>
+  </div>
+</section>
+<script src="_static/air-battle.js"></script>
 </section>
 
 
@@ -62,8 +86,8 @@ My interests include football and games.</p>
 
 <h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">About Me</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
@@ -73,8 +97,8 @@ My interests include football and games.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Yang Zhanxiang’s Coursework Site</a></li>
-      <li>Next: <a href="assignments.html" title="next chapter">Assignments</a></li>
+      <li>Previous: <a href="assignment_3.html" title="previous chapter">Assignment 3: Deployment and Integration of AI Agents</a></li>
+      <li>Next: <a href="minesweeper.html" title="next chapter">Minesweeper</a></li>
   </ul></li>
 </ul>
 </div>
@@ -104,7 +128,7 @@ My interests include football and games.</p>
       &#169;2026, Yang.
       
       |
-      <a href="_sources/about.md.txt"
+      <a href="_sources/air_battle.md.txt"
           rel="nofollow">Page source</a>
     </div>
 
