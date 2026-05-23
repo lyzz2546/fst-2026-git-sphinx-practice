@@ -18,6 +18,7 @@
     </div>
   </div>
   <div class="game2048-actions">
+    <button class="game2048-undo" id="game2048-undo" type="button" disabled>Undo (1)</button>
     <button id="game2048-new" type="button">New Game</button>
   </div>
   <div class="game2048-board-wrap">
@@ -30,7 +31,7 @@
       </div>
     </div>
   </div>
-  <p class="game2048-message">Use the arrow keys or swipe to move the tiles.</p>
+  <p class="game2048-message">Use the arrow keys or swipe to move the tiles. One undo is available in each game.</p>
 </section>
 
 <script src="_static/game-2048.js"></script>
