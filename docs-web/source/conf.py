@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Git Practice Docs'
+project = 'Home'
 copyright = '2026, Yang'
 author = 'Yang'
 
@@ -32,6 +32,7 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "alabaster"
+html_title = "Yang Zhanxiang's Coursework Site"
 html_static_path = ['_static']
 html_css_files = ['custom.css']
 html_js_files = ['custom-cursor.js']
