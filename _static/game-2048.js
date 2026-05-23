@@ -7,6 +7,7 @@
     document.documentElement.classList.add("game2048-page");
 
     var size = 4;
+    var moveDuration = 190;
     var scoreNode = document.getElementById("game2048-score");
     var bestNode = document.getElementById("game2048-best");
     var overlayNode = document.getElementById("game2048-overlay");
@@ -14,12 +15,14 @@
     var keepGoingButton = document.getElementById("game2048-keep-going");
     var newButton = document.getElementById("game2048-new");
     var retryButton = document.getElementById("game2048-try-again");
+    var tileLayerNode = null;
     var grid = [];
     var score = 0;
     var best = loadBest();
     var won = false;
     var keepPlaying = false;
     var over = false;
+    var inputLocked = false;
     var touchStart = null;
 
     function loadBest() {
@@ -59,10 +62,11 @@
     function addRandomTile() {
         var positions = emptyPositions();
         if (!positions.length) {
-            return;
+            return null;
         }
         var position = positions[Math.floor(Math.random() * positions.length)];
         grid[position.row][position.col] = Math.random() < 0.9 ? 2 : 4;
+        return position;
     }
 
     function updateScore() {
@@ -74,17 +78,59 @@
         bestNode.textContent = best;
     }
 
-    function render() {
+    function setupBoard() {
+        var slots = document.createElement("div");
+        slots.className = "game2048-slots";
+        for (var index = 0; index < size * size; index += 1) {
+            var cell = document.createElement("div");
+            cell.className = "game2048-cell";
+            slots.appendChild(cell);
+        }
+        tileLayerNode = document.createElement("div");
+        tileLayerNode.className = "game2048-tile-layer";
         boardNode.innerHTML = "";
+        boardNode.appendChild(slots);
+        boardNode.appendChild(tileLayerNode);
+    }
+
+    function positionTile(tile, row, col) {
+        tile.style.setProperty("--row", row);
+        tile.style.setProperty("--col", col);
+    }
+
+    function createTile(value, row, col, className) {
+        var tile = document.createElement("div");
+        tile.className = "game2048-tile" + (className ? " " + className : "");
+        tile.dataset.value = value;
+        tile.textContent = value;
+        tile.setAttribute("aria-label", String(value));
+        positionTile(tile, row, col);
+        return tile;
+    }
+
+    function hasPosition(positions, row, col) {
+        return positions.some(function (position) {
+            return position.row === row && position.col === col;
+        });
+    }
+
+    function renderTiles(options) {
+        var newPositions = options && options.newPositions ? options.newPositions : [];
+        var mergedPositions = options && options.mergedPositions ? options.mergedPositions : [];
+        tileLayerNode.innerHTML = "";
         for (var row = 0; row < size; row += 1) {
             for (var col = 0; col < size; col += 1) {
                 var value = grid[row][col];
-                var cell = document.createElement("div");
-                cell.className = "game2048-cell";
-                cell.dataset.value = value || "empty";
-                cell.textContent = value || "";
-                cell.setAttribute("aria-label", value ? String(value) : "Empty tile");
-                boardNode.appendChild(cell);
+                if (!value) {
+                    continue;
+                }
+                var tileClass = "";
+                if (hasPosition(newPositions, row, col)) {
+                    tileClass = "is-new";
+                } else if (hasPosition(mergedPositions, row, col)) {
+                    tileClass = "is-merged";
+                }
+                tileLayerNode.appendChild(createTile(value, row, col, tileClass));
             }
         }
         updateScore();
@@ -106,91 +152,132 @@
         won = false;
         keepPlaying = false;
         over = false;
-        addRandomTile();
-        addRandomTile();
+        inputLocked = false;
+        var startPositions = [addRandomTile(), addRandomTile()].filter(Boolean);
         hideOverlay();
-        render();
+        renderTiles({ newPositions: startPositions });
     }
 
-    function slideLine(line) {
-        var compacted = line.filter(function (value) {
-            return value !== 0;
-        });
-        var result = [];
-        for (var index = 0; index < compacted.length; index += 1) {
-            if (compacted[index] === compacted[index + 1]) {
-                var merged = compacted[index] * 2;
-                result.push(merged);
-                score += merged;
-                index += 1;
-            } else {
-                result.push(compacted[index]);
+    function getPosition(direction, lineIndex, offset) {
+        if (direction === "left") {
+            return { row: lineIndex, col: offset };
+        }
+        if (direction === "right") {
+            return { row: lineIndex, col: size - 1 - offset };
+        }
+        if (direction === "up") {
+            return { row: offset, col: lineIndex };
+        }
+        return { row: size - 1 - offset, col: lineIndex };
+    }
+
+    function calculateMove(direction) {
+        var nextGrid = freshGrid();
+        var movements = [];
+        var mergedPositions = [];
+        var scoreGain = 0;
+        var changed = false;
+
+        for (var lineIndex = 0; lineIndex < size; lineIndex += 1) {
+            var packed = [];
+            for (var offset = 0; offset < size; offset += 1) {
+                var source = getPosition(direction, lineIndex, offset);
+                var value = grid[source.row][source.col];
+                if (!value) {
+                    continue;
+                }
+
+                var previous = packed[packed.length - 1];
+                if (previous && previous.value === value && !previous.merged) {
+                    previous.value *= 2;
+                    previous.merged = true;
+                    scoreGain += previous.value;
+                    movements.push({ value: value, from: source, to: previous.position });
+                    mergedPositions.push(previous.position);
+                } else {
+                    var destination = getPosition(direction, lineIndex, packed.length);
+                    packed.push({
+                        value: value,
+                        position: destination,
+                        merged: false
+                    });
+                    movements.push({ value: value, from: source, to: destination });
+                }
             }
+
+            packed.forEach(function (tile) {
+                nextGrid[tile.position.row][tile.position.col] = tile.value;
+            });
         }
-        while (result.length < size) {
-            result.push(0);
-        }
-        return result;
+
+        movements.forEach(function (movement) {
+            if (movement.from.row !== movement.to.row || movement.from.col !== movement.to.col) {
+                changed = true;
+            }
+        });
+
+        return {
+            changed: changed,
+            grid: nextGrid,
+            movements: movements,
+            mergedPositions: mergedPositions,
+            scoreGain: scoreGain
+        };
     }
 
-    function sameLine(left, right) {
-        return left.every(function (value, index) {
-            return value === right[index];
+    function animateMove(result) {
+        tileLayerNode.innerHTML = "";
+        result.movements.forEach(function (movement) {
+            var tile = createTile(movement.value, movement.from.row, movement.from.col, "is-moving");
+            tileLayerNode.appendChild(tile);
+            movement.node = tile;
         });
+
+        // Commit the starting positions before moving so the transition remains visible.
+        tileLayerNode.getBoundingClientRect();
+        window.requestAnimationFrame(function () {
+            result.movements.forEach(function (movement) {
+                positionTile(movement.node, movement.to.row, movement.to.col);
+            });
+        });
+
+        window.setTimeout(function () {
+            grid = result.grid;
+            score += result.scoreGain;
+            var newPosition = addRandomTile();
+            renderTiles({
+                newPositions: newPosition ? [newPosition] : [],
+                mergedPositions: result.mergedPositions
+            });
+            inputLocked = false;
+
+            if (!won && grid.some(function (row) {
+                return row.some(function (value) {
+                    return value >= 2048;
+                });
+            })) {
+                won = true;
+                showOverlay("You win!", true);
+                return;
+            }
+
+            if (!movesAvailable()) {
+                over = true;
+                showOverlay("Game over!", false);
+            }
+        }, moveDuration + 20);
     }
 
     function move(direction) {
-        if (over || (won && !keepPlaying)) {
+        if (inputLocked || over || (won && !keepPlaying)) {
             return;
         }
-
-        var changed = false;
-        for (var lineIndex = 0; lineIndex < size; lineIndex += 1) {
-            var original = [];
-            var reversed = direction === "right" || direction === "down";
-            for (var offset = 0; offset < size; offset += 1) {
-                if (direction === "left" || direction === "right") {
-                    original.push(grid[lineIndex][offset]);
-                } else {
-                    original.push(grid[offset][lineIndex]);
-                }
-            }
-            var working = reversed ? original.slice().reverse() : original.slice();
-            var moved = slideLine(working);
-            var finalLine = reversed ? moved.reverse() : moved;
-            if (!sameLine(original, finalLine)) {
-                changed = true;
-            }
-            for (var writeIndex = 0; writeIndex < size; writeIndex += 1) {
-                if (direction === "left" || direction === "right") {
-                    grid[lineIndex][writeIndex] = finalLine[writeIndex];
-                } else {
-                    grid[writeIndex][lineIndex] = finalLine[writeIndex];
-                }
-            }
-        }
-
-        if (!changed) {
+        var result = calculateMove(direction);
+        if (!result.changed) {
             return;
         }
-
-        addRandomTile();
-        render();
-
-        if (!won && grid.some(function (row) {
-            return row.some(function (value) {
-                return value >= 2048;
-            });
-        })) {
-            won = true;
-            showOverlay("You win!", true);
-            return;
-        }
-
-        if (!movesAvailable()) {
-            over = true;
-            showOverlay("Game over!", false);
-        }
+        inputLocked = true;
+        animateMove(result);
     }
 
     function movesAvailable() {
@@ -259,5 +346,6 @@
     newButton.addEventListener("click", startGame);
     retryButton.addEventListener("click", startGame);
 
+    setupBoard();
     startGame();
 })();

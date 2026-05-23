@@ -952,84 +952,141 @@ html.air-battle-page div.body {
 }
 
 .game2048-board {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    aspect-ratio: 1;
+    position: relative;
     touch-action: none;
 }
 
+.game2048-slots {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    inset: 0;
+    position: absolute;
+}
+
+.game2048-tile-layer {
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+}
+
 .game2048-cell {
-    align-items: center;
     aspect-ratio: 1;
     background: rgba(238, 228, 218, 0.35);
+    border-radius: 6px;
+}
+
+.game2048-tile {
+    align-items: center;
+    aspect-ratio: 1;
     border-radius: 6px;
     color: #776e65;
     display: flex;
     font-size: 2rem;
     font-weight: 750;
     justify-content: center;
+    left: calc(var(--col) * (25% + 3px));
     line-height: 1;
+    position: absolute;
+    top: calc(var(--row) * (25% + 3px));
+    transition:
+        left 190ms cubic-bezier(0.22, 0.72, 0.28, 1),
+        top 190ms cubic-bezier(0.22, 0.72, 0.28, 1);
+    width: calc(25% - 9px);
 }
 
-.game2048-cell[data-value="2"] {
+.game2048-tile.is-new {
+    animation: game2048-appear 180ms ease-out both;
+}
+
+.game2048-tile.is-merged {
+    animation: game2048-pop 190ms ease-in-out both;
+    z-index: 2;
+}
+
+@keyframes game2048-appear {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes game2048-pop {
+    0% {
+        transform: scale(1);
+    }
+    48% {
+        transform: scale(1.12);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.game2048-tile[data-value="2"] {
     background: #eee4da;
 }
 
-.game2048-cell[data-value="4"] {
+.game2048-tile[data-value="4"] {
     background: #ede0c8;
 }
 
-.game2048-cell[data-value="8"] {
+.game2048-tile[data-value="8"] {
     background: #f2b179;
     color: #f9f6f2;
 }
 
-.game2048-cell[data-value="16"] {
+.game2048-tile[data-value="16"] {
     background: #f59563;
     color: #f9f6f2;
 }
 
-.game2048-cell[data-value="32"] {
+.game2048-tile[data-value="32"] {
     background: #f67c5f;
     color: #f9f6f2;
 }
 
-.game2048-cell[data-value="64"] {
+.game2048-tile[data-value="64"] {
     background: #f65e3b;
     color: #f9f6f2;
 }
 
-.game2048-cell[data-value="128"],
-.game2048-cell[data-value="256"],
-.game2048-cell[data-value="512"] {
+.game2048-tile[data-value="128"],
+.game2048-tile[data-value="256"],
+.game2048-tile[data-value="512"] {
     background: #edcf72;
     color: #f9f6f2;
     font-size: 1.72rem;
 }
 
-.game2048-cell[data-value="256"] {
+.game2048-tile[data-value="256"] {
     background: #edcc61;
 }
 
-.game2048-cell[data-value="512"] {
+.game2048-tile[data-value="512"] {
     background: #edc850;
 }
 
-.game2048-cell[data-value="1024"],
-.game2048-cell[data-value="2048"] {
+.game2048-tile[data-value="1024"],
+.game2048-tile[data-value="2048"] {
     background: #edc53f;
     color: #f9f6f2;
     font-size: 1.38rem;
 }
 
-.game2048-cell[data-value="2048"] {
+.game2048-tile[data-value="2048"] {
     background: #edc22e;
     box-shadow: 0 0 22px rgba(243, 215, 116, 0.72);
 }
 
-.game2048-cell[data-value="4096"],
-.game2048-cell[data-value="8192"],
-.game2048-cell[data-value="16384"] {
+.game2048-tile[data-value="4096"],
+.game2048-tile[data-value="8192"],
+.game2048-tile[data-value="16384"] {
     background: #3c3a32;
     color: #f9f6f2;
     font-size: 1.15rem;
@@ -1222,11 +1279,21 @@ div.footer {
         padding: 8px;
     }
 
-    .game2048-board {
+    .game2048-slots {
         gap: 8px;
     }
 
-    .game2048-cell {
+    .game2048-tile {
         font-size: 1.6rem;
+        left: calc(var(--col) * (25% + 2px));
+        top: calc(var(--row) * (25% + 2px));
+        width: calc(25% - 6px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game2048-tile {
+        animation: none !important;
+        transition: none !important;
     }
 }
