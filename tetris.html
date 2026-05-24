@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tetris &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=00d2af26" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/custom-cursor.js?v=c296fef6"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Process" href="process.html" />
+    <link rel="prev" title="Snake" href="snake.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tetris">
+<h1>Tetris<a class="headerlink" href="#tetris" title="Link to this heading">¶</a></h1>
+<section class="tetris-shell">
+  <div class="tetris-toolbar">
+    <div class="tetris-title">
+      <p class="page-kicker">Falling Blocks</p>
+      <p>Clear lines, manage the queue, and chase a high score.</p>
+    </div>
+    <div class="tetris-stats" aria-label="Tetris statistics">
+      <span><small>Score</small><strong id="tetris-score">0</strong></span>
+      <span><small>Best</small><strong id="tetris-best">0</strong></span>
+      <span><small>Lines</small><strong id="tetris-lines">0</strong></span>
+      <span><small>Level</small><strong id="tetris-level">1</strong></span>
+    </div>
+    <div class="tetris-actions">
+      <button class="is-primary" id="tetris-new" type="button">New Game</button>
+      <button id="tetris-pause" type="button" disabled>Pause</button>
+    </div>
+  </div>
+  <div class="tetris-arena">
+    <aside class="tetris-panel tetris-hold-panel">
+      <p>Hold</p>
+      <canvas id="tetris-hold" width="116" height="92" aria-label="Held tetromino"></canvas>
+      <dl class="tetris-guide">
+        <dt>Move</dt><dd>Arrow keys</dd>
+        <dt>Rotate</dt><dd>Up / Z</dd>
+        <dt>Drop</dt><dd>Space</dd>
+        <dt>Hold</dt><dd>C</dd>
+      </dl>
+    </aside>
+    <div class="tetris-stage">
+      <canvas id="tetris-canvas" width="300" height="600" aria-label="Tetris playfield"></canvas>
+      <div class="tetris-overlay" id="tetris-overlay">
+        <p class="page-kicker">Tetris</p>
+        <h2 id="tetris-overlay-title">Ready to stack?</h2>
+        <p id="tetris-overlay-message">Move and rotate falling blocks to complete lines.</p>
+        <button id="tetris-start" type="button">Start</button>
+      </div>
+    </div>
+    <aside class="tetris-panel tetris-next-panel">
+      <p>Next</p>
+      <canvas id="tetris-next" width="116" height="336" aria-label="Next tetrominoes"></canvas>
+    </aside>
+  </div>
+  <div class="tetris-touch" aria-label="Touch controls">
+    <button type="button" data-tetris-control="hold">Hold</button>
+    <button type="button" data-tetris-control="rotate-left">Rotate L</button>
+    <button type="button" data-tetris-control="rotate-right">Rotate R</button>
+    <button type="button" data-tetris-control="left">Left</button>
+    <button type="button" data-tetris-control="down">Down</button>
+    <button type="button" data-tetris-control="right">Right</button>
+    <button class="is-wide" type="button" data-tetris-control="drop">Hard Drop</button>
+  </div>
+  <p class="tetris-message" id="tetris-message">Arrow keys move. Up or X rotates, Z rotates back, Space drops, C holds, and P pauses.</p>
+</section>
+<script src="_static/tetris.js"></script>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Home</a></h1>
+
+
+
+<p class="blurb">Fundamentals of Software Technology coursework</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About Me</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="game.html">Game</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="snake.html" title="previous chapter">Snake</a></li>
+      <li>Next: <a href="process.html" title="next chapter">Process</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Yang.
+      
+      |
+      <a href="_sources/tetris.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
