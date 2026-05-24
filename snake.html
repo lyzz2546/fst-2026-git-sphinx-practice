@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2048 &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
+    <title>Snake &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=793b682c" />
@@ -16,8 +16,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Spider Solitaire" href="spider_solitaire.html" />
-    <link rel="prev" title="Minesweeper" href="minesweeper.html" />
+    <link rel="next" title="Process" href="process.html" />
+    <link rel="prev" title="FreeCell" href="freecell.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,42 +35,44 @@
 
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>2048<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<section class="game2048-shell">
-  <div class="game2048-header">
+  <section id="snake">
+<h1>Snake<a class="headerlink" href="#snake" title="Link to this heading">¶</a></h1>
+<section class="snake-shell">
+  <div class="snake-toolbar" aria-label="Snake controls and score">
+    <div class="snake-heading">
+      <p class="page-kicker">Garden Run</p>
+      <p>Collect fruit and keep growing.</p>
+    </div>
+    <div class="snake-stats" aria-label="Snake statistics">
+      <span><small>Score</small><strong id="snake-score">0</strong></span>
+      <span><small>Best</small><strong id="snake-best">0</strong></span>
+      <span><small>Speed</small><strong id="snake-level">1</strong></span>
+    </div>
+    <div class="snake-actions">
+      <button class="is-primary" id="snake-new" type="button">New Game</button>
+      <button id="snake-pause" type="button" disabled>Pause</button>
+    </div>
+  </div>
+  <div class="snake-stage">
+    <canvas id="snake-canvas" width="660" height="540" aria-label="Snake game board"></canvas>
+    <div class="snake-overlay" id="snake-overlay">
+      <p class="page-kicker">Snake</p>
+      <h2 id="snake-overlay-title">Garden ready</h2>
+      <p id="snake-overlay-message">Use the arrow keys or WASD to guide the snake.</p>
+      <button id="snake-start" type="button">Start</button>
+    </div>
+  </div>
+  <div class="snake-dpad" aria-label="Direction controls">
+    <button type="button" data-direction="up" aria-label="Move up">Up</button>
     <div>
-      <p class="page-kicker">Classic Puzzle</p>
-      <p class="game2048-goal">Join the tiles and reach <strong>2048</strong>.</p>
-    </div>
-    <div class="game2048-scoreboard" aria-label="Score">
-      <div class="game2048-score">
-        <span>Score</span>
-        <strong id="game2048-score">0</strong>
-      </div>
-      <div class="game2048-score">
-        <span>Best</span>
-        <strong id="game2048-best">0</strong>
-      </div>
+      <button type="button" data-direction="left" aria-label="Move left">Left</button>
+      <button type="button" data-direction="down" aria-label="Move down">Down</button>
+      <button type="button" data-direction="right" aria-label="Move right">Right</button>
     </div>
   </div>
-  <div class="game2048-actions">
-    <button class="game2048-undo" id="game2048-undo" type="button" disabled>Undo (1)</button>
-    <button id="game2048-new" type="button">New Game</button>
-  </div>
-  <div class="game2048-board-wrap">
-    <div class="game2048-board" id="game2048-board" aria-label="2048 board"></div>
-    <div class="game2048-overlay is-hidden" id="game2048-overlay">
-      <h2 id="game2048-overlay-title">You win!</h2>
-      <div class="game2048-overlay-actions">
-        <button id="game2048-keep-going" type="button">Keep Going</button>
-        <button id="game2048-try-again" type="button">Try Again</button>
-      </div>
-    </div>
-  </div>
-  <p class="game2048-message">Use the arrow keys or swipe to move the tiles. One undo is available in each game.</p>
+  <p class="snake-message" id="snake-message">Arrow keys or WASD to turn. Space pauses the game.</p>
 </section>
-<script src="_static/game-2048.js"></script>
+<script src="_static/snake.js"></script>
 </section>
 
 
@@ -104,8 +106,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="minesweeper.html" title="previous chapter">Minesweeper</a></li>
-      <li>Next: <a href="spider_solitaire.html" title="next chapter">Spider Solitaire</a></li>
+      <li>Previous: <a href="freecell.html" title="previous chapter">FreeCell</a></li>
+      <li>Next: <a href="process.html" title="next chapter">Process</a></li>
   </ul></li>
 </ul>
 </div>
@@ -135,7 +137,7 @@
       &#169;2026, Yang.
       
       |
-      <a href="_sources/game_2048.md.txt"
+      <a href="_sources/snake.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

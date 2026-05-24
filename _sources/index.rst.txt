@@ -11,7 +11,7 @@ Yang Zhanxiang's Coursework Site
    <section class="course-hero">
      <p class="page-kicker">Fundamentals of Software Technology</p>
      <p class="course-intro">
-       This static website collects my course reports, Git practice notes, and the process of building a small documentation site with Sphinx and Markdown. It also includes a small game corner where visitors can try simple browser games, starting with an airplane battle game.
+       This static website collects my course reports, Git practice notes, and the process of building a small documentation site with Sphinx and Markdown. It also includes a small game corner where visitors can try simple browser games.
      </p>
      <div class="course-meta" aria-label="Course website details">
        <span><strong>Student</strong> Yang Zhanxiang</span>
@@ -64,4 +64,7 @@ Yang Zhanxiang's Coursework Site
    air_battle
    minesweeper
    game_2048
+   spider_solitaire
+   freecell
+   snake
    process

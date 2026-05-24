@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2048 &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
+    <title>Spider Solitaire &#8212; Yang Zhanxiang&#39;s Coursework Site</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=793b682c" />
@@ -16,8 +16,8 @@
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Spider Solitaire" href="spider_solitaire.html" />
-    <link rel="prev" title="Minesweeper" href="minesweeper.html" />
+    <link rel="next" title="FreeCell" href="freecell.html" />
+    <link rel="prev" title="2048" href="game_2048.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,42 +35,45 @@
 
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>2048<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
-<section class="game2048-shell">
-  <div class="game2048-header">
-    <div>
-      <p class="page-kicker">Classic Puzzle</p>
-      <p class="game2048-goal">Join the tiles and reach <strong>2048</strong>.</p>
+  <section id="spider-solitaire">
+<h1>Spider Solitaire<a class="headerlink" href="#spider-solitaire" title="Link to this heading">¶</a></h1>
+<section class="spider-shell">
+  <div class="spider-toolbar">
+    <div class="spider-levels" role="group" aria-label="Difficulty">
+      <button class="is-active" data-spider-suits="1" type="button">Easy <span>1 Suit</span></button>
+      <button data-spider-suits="2" type="button">Medium <span>2 Suits</span></button>
+      <button data-spider-suits="4" type="button">Expert <span>4 Suits</span></button>
     </div>
-    <div class="game2048-scoreboard" aria-label="Score">
-      <div class="game2048-score">
-        <span>Score</span>
-        <strong id="game2048-score">0</strong>
-      </div>
-      <div class="game2048-score">
-        <span>Best</span>
-        <strong id="game2048-best">0</strong>
-      </div>
+    <div class="spider-stats" aria-label="Game statistics">
+      <span><small>Score</small><strong id="spider-score">500</strong></span>
+      <span><small>Moves</small><strong id="spider-moves">0</strong></span>
+      <span><small>Time</small><strong id="spider-time">00:00</strong></span>
     </div>
-  </div>
-  <div class="game2048-actions">
-    <button class="game2048-undo" id="game2048-undo" type="button" disabled>Undo (1)</button>
-    <button id="game2048-new" type="button">New Game</button>
-  </div>
-  <div class="game2048-board-wrap">
-    <div class="game2048-board" id="game2048-board" aria-label="2048 board"></div>
-    <div class="game2048-overlay is-hidden" id="game2048-overlay">
-      <h2 id="game2048-overlay-title">You win!</h2>
-      <div class="game2048-overlay-actions">
-        <button id="game2048-keep-going" type="button">Keep Going</button>
-        <button id="game2048-try-again" type="button">Try Again</button>
-      </div>
+    <div class="spider-actions">
+      <button id="spider-new" type="button">New Game</button>
+      <button id="spider-undo" type="button" disabled>Undo</button>
+      <button id="spider-hint" type="button">Hint</button>
     </div>
   </div>
-  <p class="game2048-message">Use the arrow keys or swipe to move the tiles. One undo is available in each game.</p>
+  <div class="spider-table">
+    <div class="spider-rail">
+      <div class="spider-foundations" id="spider-foundations" aria-label="Completed suits"></div>
+      <button class="spider-stock" id="spider-stock" type="button" title="Deal a new row of cards">
+        <span class="spider-stock-cards" aria-hidden="true"></span>
+        <strong id="spider-deals-left">Deals: 5</strong>
+      </button>
+    </div>
+    <div class="spider-notice" id="spider-notice" role="status" aria-live="polite"></div>
+    <div class="spider-tableau" id="spider-tableau" aria-label="Card table"></div>
+    <div class="spider-overlay is-hidden" id="spider-overlay">
+      <p class="page-kicker">Spider Solitaire</p>
+      <h2 id="spider-overlay-title">You Win!</h2>
+      <button id="spider-play-again" type="button">Play Again</button>
+    </div>
+  </div>
+  <p class="spider-status" id="spider-status">Arrange eight complete suited sequences from King down to Ace. A new deal requires every column to contain a card.</p>
 </section>
-<script src="_static/game-2048.js"></script>
+<script src="_static/spider-solitaire.js"></script>
 </section>
 
 
@@ -104,8 +107,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="minesweeper.html" title="previous chapter">Minesweeper</a></li>
-      <li>Next: <a href="spider_solitaire.html" title="next chapter">Spider Solitaire</a></li>
+      <li>Previous: <a href="game_2048.html" title="previous chapter">2048</a></li>
+      <li>Next: <a href="freecell.html" title="next chapter">FreeCell</a></li>
   </ul></li>
 </ul>
 </div>
@@ -135,7 +138,7 @@
       &#169;2026, Yang.
       
       |
-      <a href="_sources/game_2048.md.txt"
+      <a href="_sources/spider_solitaire.md.txt"
           rel="nofollow">Page source</a>
     </div>
 
