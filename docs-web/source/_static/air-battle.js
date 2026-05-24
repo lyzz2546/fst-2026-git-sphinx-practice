@@ -38,9 +38,10 @@
         y: 0,
         targetX: 0,
         targetY: 0,
-        radius: 21,
+        radius: 25,
         shotClock: 0,
-        invulnerable: 0
+        invulnerable: 0,
+        recoil: 0
     };
 
     var bullets = [];
@@ -89,6 +90,7 @@
         clouds = [];
         player.shotClock = 0;
         player.invulnerable = 0;
+        player.recoil = 0;
         player.x = width / 2;
         player.y = height - 86;
         player.targetX = player.x;
@@ -158,17 +160,18 @@
 
     function shoot() {
         bullets.push({
-            x: player.x - 10,
-            y: player.y - 28,
+            x: player.x - 19,
+            y: player.y - 34,
             radius: 4,
             speed: 440
         });
         bullets.push({
-            x: player.x + 10,
-            y: player.y - 28,
+            x: player.x + 19,
+            y: player.y - 34,
             radius: 4,
             speed: 440
         });
+        player.recoil = 0.09;
     }
 
     function burst(x, y, color, count, force) {
@@ -210,6 +213,7 @@
         state.cloudClock -= dt;
         player.shotClock -= dt;
         player.invulnerable = Math.max(0, player.invulnerable - dt);
+        player.recoil = Math.max(0, player.recoil - dt);
         state.shake = Math.max(0, state.shake - dt);
 
         if (state.spawnClock <= 0) {
@@ -224,7 +228,7 @@
 
         player.x += (player.targetX - player.x) * Math.min(1, dt * 12);
         player.y += (player.targetY - player.y) * Math.min(1, dt * 12);
-        player.x = clamp(player.x, 28, width - 28);
+        player.x = clamp(player.x, 58, width - 58);
         player.y = clamp(player.y, 56, height - 44);
 
         if (fireHeld && player.shotClock <= 0) {
@@ -333,85 +337,139 @@
     }
 
     function drawPlayer() {
+        var recoilOffset = player.recoil > 0 ?
+            Math.sin((player.recoil / 0.09) * Math.PI) * 5 : 0;
         context.save();
-        context.translate(player.x, player.y);
+        context.translate(player.x, player.y + recoilOffset);
         if (player.invulnerable > 0 && Math.floor(player.invulnerable * 12) % 2 === 0) {
             context.globalAlpha = 0.45;
         }
         context.shadowColor = "rgba(17, 66, 101, 0.3)";
-        context.shadowBlur = 16;
-        context.shadowOffsetY = 10;
+        context.shadowBlur = 18;
+        context.shadowOffsetY = 11;
 
-        context.fillStyle = "#f9fdff";
+        /* Swept passenger-aircraft wings, stabilizers, and twin nacelles. */
         context.strokeStyle = "#143b5a";
         context.lineWidth = 2;
+        context.fillStyle = "#eef5fa";
         context.beginPath();
-        context.moveTo(0, -36);
-        context.bezierCurveTo(10, -31, 13, -10, 12, 20);
-        context.bezierCurveTo(8, 28, 4, 35, 0, 39);
-        context.bezierCurveTo(-4, 35, -8, 28, -12, 20);
-        context.bezierCurveTo(-13, -10, -10, -31, 0, -36);
+        context.moveTo(-8, -14);
+        context.lineTo(-56, 10);
+        context.quadraticCurveTo(-60, 13, -55, 17);
+        context.lineTo(-13, 14);
+        context.lineTo(-8, 29);
+        context.lineTo(0, 21);
+        context.lineTo(8, 29);
+        context.lineTo(13, 14);
+        context.lineTo(55, 17);
+        context.quadraticCurveTo(60, 13, 56, 10);
+        context.lineTo(8, -14);
         context.closePath();
         context.fill();
         context.stroke();
 
-        context.fillStyle = "#eaf2f8";
+        context.fillStyle = "#f4f8fb";
         context.beginPath();
-        context.moveTo(-10, -5);
-        context.lineTo(-46, 12);
-        context.lineTo(-48, 22);
-        context.lineTo(-11, 14);
+        context.moveTo(-7, 27);
+        context.lineTo(-29, 40);
+        context.lineTo(-30, 45);
+        context.lineTo(-7, 39);
+        context.lineTo(0, 35);
+        context.lineTo(7, 39);
+        context.lineTo(30, 45);
+        context.lineTo(29, 40);
+        context.lineTo(7, 27);
         context.closePath();
         context.fill();
         context.stroke();
 
+        var fuselage = context.createLinearGradient(-10, 0, 10, 0);
+        fuselage.addColorStop(0, "#dbe6ee");
+        fuselage.addColorStop(0.43, "#ffffff");
+        fuselage.addColorStop(0.7, "#f8fbfd");
+        fuselage.addColorStop(1, "#cbdce8");
+        context.fillStyle = fuselage;
         context.beginPath();
-        context.moveTo(10, -5);
-        context.lineTo(46, 12);
-        context.lineTo(48, 22);
-        context.lineTo(11, 14);
+        context.moveTo(0, -51);
+        context.bezierCurveTo(9, -47, 12, -30, 11, -4);
+        context.lineTo(9, 30);
+        context.bezierCurveTo(7, 42, 3, 48, 0, 51);
+        context.bezierCurveTo(-3, 48, -7, 42, -9, 30);
+        context.lineTo(-11, -4);
+        context.bezierCurveTo(-12, -30, -9, -47, 0, -51);
         context.closePath();
         context.fill();
         context.stroke();
 
-        context.fillStyle = "#23b64b";
+        context.fillStyle = "#1d5eaa";
         context.beginPath();
-        context.moveTo(-7, 18);
-        context.lineTo(-23, 36);
-        context.lineTo(-8, 33);
-        context.lineTo(0, 22);
+        context.moveTo(-8, 13);
+        context.lineTo(8, 13);
+        context.lineTo(7, 37);
+        context.lineTo(0, 45);
+        context.lineTo(-7, 37);
         context.closePath();
         context.fill();
-        context.stroke();
 
         context.fillStyle = "#163f94";
         context.beginPath();
-        context.moveTo(7, 18);
-        context.lineTo(23, 36);
-        context.lineTo(8, 33);
-        context.lineTo(0, 22);
-        context.closePath();
-        context.fill();
-        context.stroke();
-
-        context.fillStyle = "#1b64b6";
-        context.beginPath();
-        context.moveTo(-8, 4);
-        context.lineTo(8, 4);
-        context.lineTo(7, 22);
-        context.lineTo(-7, 22);
+        context.moveTo(-6, 28);
+        context.lineTo(-25, 42);
+        context.lineTo(-7, 37);
+        context.lineTo(0, 31);
         context.closePath();
         context.fill();
 
-        context.fillStyle = "#8eb6d7";
+        context.fillStyle = "#20ae51";
         context.beginPath();
-        context.ellipse(0, -25, 5, 9, 0, 0, Math.PI * 2);
+        context.moveTo(6, 26);
+        context.lineTo(26, 42);
+        context.lineTo(7, 37);
+        context.lineTo(0, 31);
+        context.closePath();
+        context.fill();
+
+        [-29, 29].forEach(function (engineX) {
+            context.fillStyle = "#eff5f9";
+            context.beginPath();
+            context.ellipse(engineX, 8, 7, 12, 0, 0, Math.PI * 2);
+            context.fill();
+            context.stroke();
+            context.fillStyle = "#203541";
+            context.beginPath();
+            context.ellipse(engineX, 3, 5, 4.2, 0, 0, Math.PI * 2);
+            context.fill();
+            context.fillStyle = "#9fb3c2";
+            context.beginPath();
+            context.ellipse(engineX, 3, 2.2, 1.9, 0, 0, Math.PI * 2);
+            context.fill();
+        });
+
+        context.fillStyle = "#557a96";
+        context.beginPath();
+        context.moveTo(-6, -35);
+        context.quadraticCurveTo(0, -42, 6, -35);
+        context.lineTo(5, -27);
+        context.quadraticCurveTo(0, -31, -5, -27);
+        context.closePath();
         context.fill();
 
         context.fillStyle = "#c71f2d";
-        context.font = "700 8px Arial";
+        context.font = "700 7px Arial";
         context.textAlign = "center";
-        context.fillText("C919", 0, -2);
+        context.save();
+        context.rotate(-Math.PI / 2);
+        context.fillText("C919", -4, -2);
+        context.restore();
+
+        context.fillStyle = "#7894a8";
+        [-1, 1].forEach(function (side) {
+            for (var windowY = -20; windowY < 8; windowY += 7) {
+                context.beginPath();
+                context.arc(side * 7, windowY, 1.15, 0, Math.PI * 2);
+                context.fill();
+            }
+        });
         context.restore();
     }
 
@@ -503,7 +561,7 @@
     function movePlayer(event) {
         var rect = canvas.getBoundingClientRect();
         pointerSeen = true;
-        player.targetX = clamp(event.clientX - rect.left, 28, width - 28);
+        player.targetX = clamp(event.clientX - rect.left, 58, width - 58);
         player.targetY = clamp(event.clientY - rect.top, 56, height - 44);
     }
 

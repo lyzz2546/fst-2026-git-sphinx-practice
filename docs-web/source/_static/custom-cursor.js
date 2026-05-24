@@ -70,6 +70,27 @@
 
         document.addEventListener("mouseleave", function () {
             cursor.classList.remove("is-visible");
+            cursor.classList.remove("is-pressed");
+        });
+
+        document.addEventListener("pointerdown", function (event) {
+            if (event.button === 0) {
+                cursor.classList.add("is-pressed");
+            }
+        });
+
+        document.addEventListener("pointerup", function (event) {
+            if (event.button === 0) {
+                cursor.classList.remove("is-pressed");
+            }
+        });
+
+        document.addEventListener("pointercancel", function () {
+            cursor.classList.remove("is-pressed");
+        });
+
+        window.addEventListener("blur", function () {
+            cursor.classList.remove("is-pressed");
         });
     }
 

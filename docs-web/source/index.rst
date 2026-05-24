@@ -67,4 +67,5 @@ Yang Zhanxiang's Coursework Site
    spider_solitaire
    freecell
    snake
+   tetris
    process

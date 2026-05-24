@@ -2,7 +2,7 @@
 
 <section class="game-library">
   <p class="page-kicker">Mini Games</p>
-  <p>A small game corner for the website. Six browser games are ready to play.</p>
+  <p>A small game corner for the website. Seven browser games are ready to play.</p>
 </section>
 
 <section class="game-grid" id="game-grid">
@@ -51,6 +51,14 @@
     <h2>Snake</h2>
     <p>Guide a growing snake through a garden board and collect fruit for a high score.</p>
     <a href="snake.html">Launch game</a>
+  </article>
+
+  <article class="game-card game-card-tetris is-page-hidden" data-game-page="2">
+    <span class="card-status">Playable</span>
+    <span class="tetris-card-preview" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <h2>Tetris</h2>
+    <p>Rotate falling blocks, clear lines, hold pieces, and build a high score.</p>
+    <a href="tetris.html">Launch game</a>
   </article>
 
   <article class="game-card game-card-muted is-page-hidden" data-game-page="2">
