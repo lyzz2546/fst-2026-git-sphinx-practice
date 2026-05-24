@@ -64,4 +64,7 @@ Yang Zhanxiang's Coursework Site
    air_battle
    minesweeper
    game_2048
+   spider_solitaire
+   freecell
+   snake
    process
