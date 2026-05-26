@@ -17,6 +17,7 @@
       <button id="freecell-undo" type="button" disabled>Undo</button>
       <button id="freecell-hint" type="button">Hint</button>
       <button id="freecell-auto" type="button">Auto Home</button>
+      <button id="freecell-easy" type="button" aria-pressed="false">Easy Moves: Off</button>
     </div>
   </div>
 
@@ -39,6 +40,7 @@
       <button id="freecell-play-again" type="button">Play Again</button>
     </div>
   </div>
+  <p class="freecell-help">Build downward in alternating colors. Classic moves require open free cells or empty columns to carry a run; turn on <strong>Easy Moves</strong> to move any valid run together.</p>
   <p class="freecell-status" id="freecell-status">Each new game uses a known-solvable classic deal. Arrange cards in alternating colors.</p>
 </section>
 

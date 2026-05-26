@@ -8,29 +8,67 @@
 
     var size = 4;
     var moveDuration = 190;
+    var shellNode = document.getElementById("game2048-shell");
     var scoreNode = document.getElementById("game2048-score");
     var bestNode = document.getElementById("game2048-best");
+    var bestLabelNode = document.getElementById("game2048-best-label");
+    var goalNode = document.getElementById("game2048-goal");
     var overlayNode = document.getElementById("game2048-overlay");
     var overlayTitleNode = document.getElementById("game2048-overlay-title");
     var keepGoingButton = document.getElementById("game2048-keep-going");
     var undoButton = document.getElementById("game2048-undo");
     var newButton = document.getElementById("game2048-new");
     var retryButton = document.getElementById("game2048-try-again");
+    var messageNode = document.getElementById("game2048-message");
+    var setupNode = document.getElementById("game2048-setup");
+    var setupTitleNode = document.getElementById("game2048-setup-title");
+    var startButton = document.getElementById("game2048-start");
+    var cancelButton = document.getElementById("game2048-cancel");
+    var unlockNoteNode = document.getElementById("game2048-unlock-note");
+    var startButtons = {
+        0: document.getElementById("game2048-start-classic"),
+        2048: document.getElementById("game2048-start-2048"),
+        4096: document.getElementById("game2048-start-4096"),
+        8192: document.getElementById("game2048-start-8192")
+    };
+    var modeButtons = {
+        none: document.getElementById("game2048-mode-none"),
+        one: document.getElementById("game2048-mode-one"),
+        unlimited: document.getElementById("game2048-mode-unlimited")
+    };
+    var startValues = [0, 2048, 4096, 8192];
     var tileLayerNode = null;
     var grid = [];
     var score = 0;
-    var best = loadBest();
+    var startTile = 0;
+    var targetTile = 2048;
+    var best = loadBest(startTile);
+    var unlockedStartTile = loadUnlockedStartTile();
     var won = false;
     var keepPlaying = false;
     var over = false;
     var inputLocked = false;
     var touchStart = null;
-    var undoSnapshot = null;
+    var undoMode = "unlimited";
+    var pendingStartTile = startTile;
+    var pendingUndoMode = undoMode;
+    var undoHistory = [];
     var undoUsed = false;
+    var setupOpen = false;
+    var started = false;
+    var gameVersion = 0;
 
-    function loadBest() {
+    function bestKey(value) {
+        return "game2048-best-" + (value ? String(value) : "classic");
+    }
+
+    function loadBest(value) {
         try {
-            return Number(window.localStorage.getItem("game2048-best") || 0);
+            var saved = window.localStorage.getItem(bestKey(value));
+            if (saved === null && value === 0) {
+                saved = window.localStorage.getItem("game2048-best");
+            }
+            return Number(saved || 0);
         } catch (error) {
             return 0;
         }
@@ -38,7 +76,24 @@
 
     function saveBest() {
         try {
-            window.localStorage.setItem("game2048-best", String(best));
+            window.localStorage.setItem(bestKey(startTile), String(best));
+        } catch (error) {
+            return;
+        }
+    }
+
+    function loadUnlockedStartTile() {
+        try {
+            var saved = Number(window.localStorage.getItem("game2048-unlocked-start") || 0);
+            return startValues.indexOf(saved) >= 0 ? saved : 0;
+        } catch (error) {
+            return 0;
+        }
+    }
+
+    function saveUnlockedStartTile() {
+        try {
+            window.localStorage.setItem("game2048-unlocked-start", String(unlockedStartTile));
         } catch (error) {
             return;
         }
@@ -149,9 +204,73 @@
         overlayNode.classList.remove("is-hidden");
     }
 
+    function modeDescription() {
+        if (undoMode === "none") {
+            return "No undo is available in this game.";
+        }
+        if (undoMode === "one") {
+            return "One undo is available in this game.";
+        }
+        return "Unlimited undo is enabled.";
+    }
+
+    function updateSetupControls() {
+        startValues.forEach(function (value) {
+            var selected = value === pendingStartTile;
+            var unlocked = value === 0 || value <= unlockedStartTile;
+            startButtons[value].disabled = !unlocked;
+            startButtons[value].textContent = value === 0 ? "Classic" :
+                String(value) + (unlocked ? "" : " (Locked)");
+            startButtons[value].classList.toggle("is-selected", selected);
+            startButtons[value].setAttribute("aria-pressed", String(selected));
+        });
+        Object.keys(modeButtons).forEach(function (mode) {
+            var selected = mode === pendingUndoMode;
+            modeButtons[mode].classList.toggle("is-selected", selected);
+            modeButtons[mode].setAttribute("aria-pressed", String(selected));
+        });
+        if (unlockedStartTile >= 8192) {
+            unlockNoteNode.textContent = "All advanced starts unlocked. Higher starts begin in the top-left corner.";
+        } else {
+            var nextUnlock = unlockedStartTile ? unlockedStartTile * 2 : 2048;
+            unlockNoteNode.textContent = "Reach " + nextUnlock + " to unlock Start from " + nextUnlock + ".";
+        }
+    }
+
+    function openSetup() {
+        pendingStartTile = startTile;
+        pendingUndoMode = undoMode;
+        setupOpen = true;
+        shellNode.classList.add("is-choosing");
+        setupTitleNode.textContent = started ? "New Game" : "Choose a Mode";
+        cancelButton.hidden = !started;
+        updateSetupControls();
+        setupNode.classList.remove("is-hidden");
+    }
+
+    function closeSetup() {
+        if (!started) {
+            return;
+        }
+        setupOpen = false;
+        shellNode.classList.remove("is-choosing");
+        setupNode.classList.add("is-hidden");
+    }
+
     function updateUndoButton() {
-        undoButton.disabled = undoUsed || !undoSnapshot || inputLocked;
-        undoButton.textContent = undoUsed ? "Undo Used" : "Undo (1)";
+        if (undoMode === "none") {
+            undoButton.disabled = true;
+            undoButton.textContent = "Undo: Off";
+            return;
+        }
+        undoButton.disabled = inputLocked || !undoHistory.length ||
+            (undoMode === "one" && undoUsed);
+        if (undoMode === "one") {
+            undoButton.textContent = undoUsed ? "Undo Used" : "Undo (1)";
+            return;
+        }
+        undoButton.textContent = undoHistory.length ?
+            "Undo (" + undoHistory.length + ")" : "Undo";
     }
 
     function copyGrid(source) {
@@ -161,44 +280,81 @@
     }
 
     function saveUndoSnapshot() {
-        undoSnapshot = {
+        if (undoMode === "none" || (undoMode === "one" && undoUsed)) {
+            return;
+        }
+        var snapshot = {
             grid: copyGrid(grid),
             score: score,
             won: won,
             keepPlaying: keepPlaying,
             over: over
         };
+        if (undoMode === "one") {
+            undoHistory = [snapshot];
+        } else {
+            undoHistory.push(snapshot);
+        }
         updateUndoButton();
     }
 
     function undoMove() {
-        if (inputLocked || undoUsed || !undoSnapshot) {
+        if (inputLocked || undoMode === "none" || !undoHistory.length ||
+            (undoMode === "one" && undoUsed)) {
             return;
         }
-        grid = copyGrid(undoSnapshot.grid);
-        score = undoSnapshot.score;
-        won = undoSnapshot.won;
-        keepPlaying = undoSnapshot.keepPlaying;
-        over = undoSnapshot.over;
-        undoUsed = true;
-        undoSnapshot = null;
+        var snapshot = undoHistory.pop();
+        grid = copyGrid(snapshot.grid);
+        score = snapshot.score;
+        won = snapshot.won;
+        keepPlaying = snapshot.keepPlaying;
+        over = snapshot.over;
+        if (undoMode === "one") {
+            undoUsed = true;
+            undoHistory = [];
+        }
         hideOverlay();
         renderTiles({});
         updateUndoButton();
     }
 
-    function startGame() {
+    function startGame(nextStartTile, nextUndoMode) {
+        if (typeof nextStartTile === "number") {
+            startTile = nextStartTile;
+        }
+        if (nextUndoMode) {
+            undoMode = nextUndoMode;
+        }
+        targetTile = startTile ? startTile * 2 : 2048;
+        best = loadBest(startTile);
+        started = true;
+        gameVersion += 1;
         grid = freshGrid();
         score = 0;
         won = false;
         keepPlaying = false;
         over = false;
         inputLocked = false;
-        undoSnapshot = null;
+        undoHistory = [];
         undoUsed = false;
-        var startPositions = [addRandomTile(), addRandomTile()].filter(Boolean);
+        var startPositions = [];
+        if (startTile) {
+            grid[0][0] = startTile;
+            startPositions.push({ row: 0, col: 0 });
+        }
+        startPositions.push(addRandomTile(), addRandomTile());
+        startPositions = startPositions.filter(Boolean);
+        closeSetup();
         hideOverlay();
         renderTiles({ newPositions: startPositions });
+        goalNode.textContent = targetTile;
+        bestLabelNode.textContent = "Best - " + (startTile ? startTile : "Classic");
+        messageNode.textContent = (startTile ?
+            "Starting from " + startTile + " in the top-left. " :
+            "Classic start. ") + "Reach " + targetTile + ". " + modeDescription();
+        pendingStartTile = startTile;
+        pendingUndoMode = undoMode;
+        updateSetupControls();
         updateUndoButton();
     }
 
@@ -269,7 +425,26 @@
         };
     }
 
+    function updateUnlocks() {
+        var largestTile = grid.reduce(function (largest, row) {
+            return Math.max(largest, Math.max.apply(null, row));
+        }, 0);
+        var newlyUnlocked = 0;
+        startValues.forEach(function (value) {
+            if (value && value <= largestTile && value > unlockedStartTile) {
+                newlyUnlocked = value;
+            }
+        });
+        if (newlyUnlocked) {
+            unlockedStartTile = newlyUnlocked;
+            saveUnlockedStartTile();
+            updateSetupControls();
+        }
+        return newlyUnlocked;
+    }
+
     function animateMove(result) {
+        var activeGameVersion = gameVersion;
         tileLayerNode.innerHTML = "";
         result.movements.forEach(function (movement) {
             var tile = createTile(movement.value, movement.from.row, movement.from.col, "is-moving");
@@ -286,6 +461,9 @@
         });
 
         window.setTimeout(function () {
+            if (activeGameVersion !== gameVersion) {
+                return;
+            }
             grid = result.grid;
             score += result.scoreGain;
             var newPosition = addRandomTile();
@@ -295,14 +473,19 @@
             });
             inputLocked = false;
             updateUndoButton();
+            var newlyUnlocked = updateUnlocks();
+            if (newlyUnlocked) {
+                messageNode.textContent = "Start from " + newlyUnlocked +
+                    " unlocked. New advanced games place it in the top-left corner.";
+            }
 
             if (!won && grid.some(function (row) {
                 return row.some(function (value) {
-                    return value >= 2048;
+                    return value >= targetTile;
                 });
             })) {
                 won = true;
-                showOverlay("You win!", true);
+                showOverlay("You reached " + targetTile + "!", true);
                 return;
             }
 
@@ -314,16 +497,14 @@
     }
 
     function move(direction) {
-        if (inputLocked || over || (won && !keepPlaying)) {
+        if (setupOpen || inputLocked || over || (won && !keepPlaying)) {
             return;
         }
         var result = calculateMove(direction);
         if (!result.changed) {
             return;
         }
-        if (!undoUsed) {
-            saveUndoSnapshot();
-        }
+        saveUndoSnapshot();
         inputLocked = true;
         updateUndoButton();
         animateMove(result);
@@ -392,10 +573,31 @@
         hideOverlay();
     });
 
-    newButton.addEventListener("click", startGame);
-    retryButton.addEventListener("click", startGame);
+    newButton.addEventListener("click", openSetup);
+    retryButton.addEventListener("click", function () {
+        startGame(startTile, undoMode);
+    });
     undoButton.addEventListener("click", undoMove);
+    startValues.forEach(function (value) {
+        startButtons[value].addEventListener("click", function () {
+            if (value && value > unlockedStartTile) {
+                return;
+            }
+            pendingStartTile = value;
+            updateSetupControls();
+        });
+    });
+    Object.keys(modeButtons).forEach(function (mode) {
+        modeButtons[mode].addEventListener("click", function () {
+            pendingUndoMode = mode;
+            updateSetupControls();
+        });
+    });
+    cancelButton.addEventListener("click", closeSetup);
+    startButton.addEventListener("click", function () {
+        startGame(pendingStartTile, pendingUndoMode);
+    });
 
     setupBoard();
-    startGame();
+    openSetup();
 })();

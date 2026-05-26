@@ -18,6 +18,7 @@
     var undoButton = document.getElementById("freecell-undo");
     var hintButton = document.getElementById("freecell-hint");
     var autoButton = document.getElementById("freecell-auto");
+    var easyButton = document.getElementById("freecell-easy");
     var overlayNode = document.getElementById("freecell-overlay");
     var againButton = document.getElementById("freecell-play-again");
 
@@ -41,6 +42,7 @@
     var finished = false;
     var hintTimer = null;
     var currentDeal = 0;
+    var easyMoves = false;
 
     function rankText(rank) {
         if (rank === 1) {
@@ -193,7 +195,7 @@
         finished = false;
         overlayNode.classList.add("is-hidden");
         updateStatus("Classic Deal #" + currentDeal +
-            " has a known solution. Keep free cells open whenever possible.");
+            " has a known solution. Keep free cells open, or turn on Easy Moves for relaxed run movement.");
         render();
     }
 
@@ -257,7 +259,7 @@
                 return false;
             }
         }
-        return cards.length <= capacityForTableau(destinationIndex);
+        return easyMoves || cards.length <= capacityForTableau(destinationIndex);
     }
 
     function canPlaceOnHome(cards, homeIndex) {
@@ -328,9 +330,29 @@
         }
     }
 
+    function unavailableMoveStatus(source, target) {
+        var cards = sourceCards(source);
+        if (!easyMoves && target && target.zone === "tableau" &&
+            isMovableSource(source) && cards.length > 1 &&
+            !(source.zone === "tableau" && source.index === target.index)) {
+            var destination = columns[target.index];
+            var top = destination[destination.length - 1];
+            var matchesDestination = !top ||
+                (top.rank === cards[0].rank + 1 &&
+                    suits[top.suit].red !== suits[cards[0].suit].red);
+            var capacity = capacityForTableau(target.index);
+            if (matchesDestination && cards.length > capacity) {
+                return "Classic moves can carry " + capacity + " card" +
+                    (capacity === 1 ? "" : "s") + " right now, but this run has " +
+                    cards.length + ". Open a free cell or column, or turn on Easy Moves.";
+            }
+        }
+        return "That move is not available.";
+    }
+
     function moveCards(source, target) {
         if (finished || !canPlace(source, target)) {
-            updateStatus("That move is not available.");
+            updateStatus(unavailableMoveStatus(source, target));
             return false;
         }
         history.push(copyState());
@@ -610,6 +632,9 @@
         movesNode.textContent = moves;
         timeNode.textContent = timeText(seconds);
         undoButton.disabled = history.length === 0;
+        easyButton.textContent = "Easy Moves: " + (easyMoves ? "On" : "Off");
+        easyButton.setAttribute("aria-pressed", String(easyMoves));
+        easyButton.classList.toggle("is-enabled", easyMoves);
         renderCells();
         renderHomes();
         renderTableau();
@@ -685,6 +710,15 @@
     undoButton.addEventListener("click", undo);
     hintButton.addEventListener("click", hint);
     autoButton.addEventListener("click", autoHome);
+    easyButton.addEventListener("click", function () {
+        easyMoves = !easyMoves;
+        selected = null;
+        hinted = null;
+        render();
+        updateStatus(easyMoves ?
+            "Easy Moves enabled. Any valid alternating run can move together." :
+            "Classic moves enabled. Multi-card runs need enough open free cells and empty columns.");
+    });
 
     newGame();
 })();

@@ -1268,6 +1268,13 @@ html.air-battle-page div.body {
     justify-content: space-between;
 }
 
+.game2048-shell.is-choosing .game2048-header,
+.game2048-shell.is-choosing .game2048-actions,
+.game2048-shell.is-choosing .game2048-board-wrap,
+.game2048-shell.is-choosing .game2048-message {
+    display: none;
+}
+
 .game2048-header .page-kicker {
     background: #edc22e;
     border-color: #edc22e;
@@ -1306,6 +1313,95 @@ html.air-battle-page div.body {
 
 .game2048-score strong {
     font-size: 1.32rem;
+}
+
+.game2048-setup {
+    background: #f1e8de;
+    border-radius: 7px;
+    margin: 0 0 12px;
+    padding: 13px;
+}
+
+.game2048-shell.is-choosing .game2048-setup {
+    margin: 0;
+}
+
+.game2048-setup.is-hidden {
+    display: none;
+}
+
+.game2048-setup h2 {
+    color: #776e65;
+    font-size: 1.06rem;
+    margin: 0 0 10px;
+}
+
+.game2048-setup p {
+    color: #776e65 !important;
+    font-size: 0.78rem !important;
+    font-weight: 700;
+    margin: 9px 0 5px;
+    text-transform: uppercase;
+}
+
+.game2048-options {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.game2048-options button {
+    background: #eee4da;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    color: #776e65;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    min-height: 35px;
+    padding: 6px 11px;
+}
+
+.game2048-options button:hover:not(:disabled),
+.game2048-options button.is-selected {
+    background: #8f7a66;
+    color: #f9f6f2;
+}
+
+.game2048-options button:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.52;
+}
+
+.game2048-setup .game2048-unlock-note {
+    font-size: 0.76rem !important;
+    font-weight: 500;
+    margin-top: 11px;
+    text-transform: none;
+}
+
+.game2048-setup-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.game2048-setup-actions button {
+    background: #d7c8ba;
+    border: 0;
+    border-radius: 5px;
+    color: #62574e;
+    font: inherit;
+    font-weight: 700;
+    min-height: 38px;
+    padding: 8px 14px;
+}
+
+.game2048-setup-actions .is-primary {
+    background: #8f7a66;
+    color: #f9f6f2;
 }
 
 .game2048-actions {
@@ -2030,6 +2126,7 @@ html.freecell-page div.body {
 }
 
 .freecell-actions .is-primary,
+.freecell-actions .is-enabled,
 .freecell-overlay button {
     background: #17746d;
     border-color: #17746d;
@@ -2238,6 +2335,7 @@ html.freecell-page div.body {
     margin: 0 0 18px;
 }
 
+.freecell-help,
 .freecell-status {
     background: #eef8f7;
     border: 1px solid rgba(23, 116, 109, 0.14);
@@ -2246,6 +2344,10 @@ html.freecell-page div.body {
     font-size: 0.92rem !important;
     margin: 14px 0 0 !important;
     padding: 10px 12px;
+}
+
+.freecell-help {
+    background: #f6fbfb;
 }
 
 .snake-shell {
