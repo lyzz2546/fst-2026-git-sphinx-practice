@@ -40,7 +40,7 @@ jobs:
         run: sphinx-build -b html docs-web/source docs-web/build/html
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: docs-web/build/html
 
