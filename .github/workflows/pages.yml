@@ -32,9 +32,6 @@ jobs:
       - name: Install Sphinx dependencies
         run: pip install -r docs-web/requirements.txt
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v4
-
       - name: Build site
         run: sphinx-build -b html docs-web/source docs-web/build/html
 
