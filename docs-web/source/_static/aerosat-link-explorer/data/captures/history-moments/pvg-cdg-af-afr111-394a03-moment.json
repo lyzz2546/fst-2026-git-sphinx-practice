@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "source": "opensky-history-track-midpoint",
+    "routeId": "PVG-CDG-AF",
+    "openskyTime": 1781317424,
+    "routeFlightSource": "same-historical-track-as-route-line",
+    "routeFlightsFound": [
+      {
+        "routeId": "PVG-CDG-AF",
+        "callsign": "AFR111",
+        "icao24": "394a03"
+      }
+    ],
+    "routeFlightCount": 1,
+    "contextAircraftCount": 0,
+    "selectedPointIndex": 54,
+    "trackFile": "data/tracks/history/pvg-cdg-af-afr111-394a03-20260612.json",
+    "note": "Midpoint aircraft marker generated from the same OpenSky historical track file used for the route line."
+  },
+  "states": [
+    [
+      "394a03",
+      "AFR111  ",
+      null,
+      1781317424,
+      1781317424,
+      6.4242,
+      49.4698,
+      10363.0,
+      false,
+      218.06,
+      268.0,
+      0,
+      null,
+      10363.0,
+      null,
+      false,
+      0
+    ]
+  ]
+}

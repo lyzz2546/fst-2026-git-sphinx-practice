@@ -1,0 +1,550 @@
+{
+  "schemaVersion": "1.0.0",
+  "catalogId": "pvg-cdg-public-satellites",
+  "title": "PVG–CDG 航路公开卫星目录（GEO / LEO）",
+  "description": "基于公开资料整理的上海浦东—巴黎戴高乐代表性航路相关卫星清单。用于项目 data.js 维护、仰角分析与 LEO TLE 加载对接。非运营商实时链路数据。",
+  "routeId": "PVG-CDG",
+  "lastUpdated": "2026-06-08",
+  "disclaimer": "本目录不表示某次具体航班实际接入的卫星；LEO 条目为星座级公开 TLE 源，非逐星 aviation IFC 授权清单。",
+
+  "projectIntegration": {
+    "runtimeFile": "src/data.js",
+    "geoField": "AEROSAT_DATA.geoSatellites",
+    "leoFeedField": "AEROSAT_DATA.publicSatelliteFeeds",
+    "providerField": "AEROSAT_DATA.providers",
+    "geoRuntimeShape": {
+      "id": "string — 项目内唯一键，如 i5-f1",
+      "name": "string — 显示名称",
+      "operator": "string",
+      "lon": "number — 星下点经度（度，东经为正，西经为负）",
+      "band": "string — 如 Ka、Ku、L",
+      "sourceId": "string — 对应 AEROSAT_DATA.sources 的键"
+    },
+    "leoFeedRuntimeShape": {
+      "id": "string — 如 starlink",
+      "label": "string",
+      "provider": "string",
+      "shellId": "leo",
+      "color": "string — CSS 色值",
+      "url": "string — CelesTrak GP JSON URL"
+    },
+    "syncWorkflow": [
+      "1. 更新本 JSON 中 geoSatellites.recommendedForElevation 条目",
+      "2. 将 lon / name / id 同步到 src/data.js 的 geoSatellites 数组",
+      "3. 在 sources 中补充或修正 sourceId 引用",
+      "4. 刷新浏览器，检查 Analysis 面板 per-satellite 表与航迹着色",
+      "5. LEO：更新 publicSatelliteFeeds 的 url 或 celestrakGroup 即可，无需逐星录入"
+    ],
+    "knownDataJsCorrections": [
+      {
+        "id": "i5-f4",
+        "field": "lon",
+        "currentInDataJs": 83.0,
+        "correctValue": 56.5,
+        "reason": "83°E 为 Inmarsat-6 F1 星下点，非 I-5 F4"
+      },
+      {
+        "id": "i6-f1",
+        "field": "lon",
+        "currentInDataJs": 64.0,
+        "correctValue": 83.8,
+        "reason": "SatSig / N2YO 公开跟踪约 83.8°E"
+      }
+    ],
+    "recommendedGeoAdditions": ["i5-f3", "i5-f5"]
+  },
+
+  "geoSatellites": [
+    {
+      "id": "i5-f1",
+      "name": "Inmarsat-5 F1 (GX-1)",
+      "noradId": "40153",
+      "cosparId": "2013-073A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 62.6,
+      "band": ["Ka"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "EMEA",
+      "relevanceToRoute": "high",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat fleet table",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SatSig GEO list — INMARSAT 5-F1",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08",
+          "note": "星下点 62.6°E"
+        }
+      ]
+    },
+    {
+      "id": "i5-f4",
+      "name": "Inmarsat-5 F4 (GX-4)",
+      "noradId": "41972",
+      "cosparId": "2017-025A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 56.5,
+      "band": ["Ka"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "Europe + in-orbit spare",
+      "relevanceToRoute": "high",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat-5 F4 at 56.5° East",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SatSig — INMARSAT 5-F4",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i5-f2",
+      "name": "Inmarsat-5 F2 (GX-2)",
+      "noradId": "40384",
+      "cosparId": "2015-005A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": -55.0,
+      "band": ["Ka"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "Americas",
+      "relevanceToRoute": "low",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "note": "对欧亚航路仰角通常较低，但 GX 全球组网分析中常保留",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat-5 F2 at 55° West",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SatSig — INMARSAT 5-F2",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i5-f3",
+      "name": "Inmarsat-5 F3 (GX-3)",
+      "noradId": "40874",
+      "cosparId": "2015-042A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 179.6,
+      "band": ["Ka"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "Pacific / Asia / West Americas",
+      "relevanceToRoute": "medium",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "note": "离港华东段可见性相关；当前 data.js 尚未收录，建议补充",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat-5 F3 at 179.6° East",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SatSig — INMARSAT 5-F3",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i5-f5",
+      "name": "Inmarsat GX5 (Inmarsat-5 F5)",
+      "noradId": "44801",
+      "cosparId": "2019-079B",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 11.0,
+      "band": ["Ka"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "Europe and Middle East",
+      "relevanceToRoute": "high",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "note": "SatSig 登记为 INMARSAT GX5 @ 11.0°E；当前 data.js 尚未收录",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat-5 F5 at 11° East",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SatSig — INMARSAT GX5",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i6-f1",
+      "name": "Inmarsat-6 F1 (GX 6A)",
+      "noradId": "50319",
+      "cosparId": "2021-128A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 83.8,
+      "band": ["Ka", "L"],
+      "aviationRole": "primary_gx",
+      "coverageLabel": "Global Xpress next-gen",
+      "relevanceToRoute": "high",
+      "status": "operational",
+      "recommendedForElevation": true,
+      "projectFieldInDataJs": "geoSatellites",
+      "sources": [
+        {
+          "title": "SatSig — INMARSAT 6-F1",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08",
+          "note": "83.8°E"
+        },
+        {
+          "title": "SatBeams — Inmarsat-6 F1 position",
+          "url": "https://www.satbeams.com/satellites?norad=50319",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "N2YO — INMARSAT 6-F1",
+          "url": "https://www.n2yo.com/satellite/?s=50319",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i6-f2",
+      "name": "Inmarsat-6 F2 (GX 6B)",
+      "noradId": "55683",
+      "cosparId": "2023-022A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": null,
+      "band": ["Ka", "L"],
+      "aviationRole": "primary_gx",
+      "relevanceToRoute": "none",
+      "status": "failed_in_orbit",
+      "recommendedForElevation": false,
+      "note": "2023 年入轨后电源故障，未投入运营；勿纳入仰角分析",
+      "sources": [
+        {
+          "title": "Wikipedia — Inmarsat-6 F2 failed in orbit",
+          "url": "https://en.wikipedia.org/wiki/Inmarsat",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "is-39",
+      "name": "Intelsat 39 (IS-39)",
+      "noradId": "44476",
+      "cosparId": "2019-049B",
+      "operator": "Intelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 62.0,
+      "band": ["C", "Ku", "Ka"],
+      "aviationRole": "ifc_candidate_epic",
+      "coverageLabel": "Europe, Africa, Asia, Indian Ocean",
+      "relevanceToRoute": "high",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "projectFieldInDataJs": null,
+      "note": "公开资料中 Intelsat Aviation / 集成商常用 Epic HTS；项目当前仅建模 Inmarsat GX",
+      "sources": [
+        {
+          "title": "SatSig — INTELSAT 39",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "Intelsat Aviation",
+          "url": "https://www.intelsat.com/aviation/",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "is-33e",
+      "name": "Intelsat 33e (IS-33e)",
+      "noradId": "41748",
+      "cosparId": "2016-053B",
+      "operator": "Intelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 60.0,
+      "band": ["C", "Ku", "Ka"],
+      "aviationRole": "ifc_candidate_epic",
+      "relevanceToRoute": "historical",
+      "status": "lost_2024-10",
+      "recommendedForElevation": false,
+      "note": "2024-10-19 在轨解体，曾用于航空 Ku IFC；仅作历史参考",
+      "sources": [
+        {
+          "title": "Wikipedia — Intelsat 33e",
+          "url": "https://en.wikipedia.org/wiki/Intelsat_33e",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "SpaceNews — Intelsat 33e breakup",
+          "url": "https://spacenews.com/intelsat-33e-loses-power-in-geostationary-orbit/",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "is-22",
+      "name": "Intelsat 22 (IS-22)",
+      "noradId": "38087",
+      "cosparId": "2012-011A",
+      "operator": "Intelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 72.1,
+      "band": ["C", "Ku"],
+      "aviationRole": "ifc_candidate",
+      "relevanceToRoute": "medium",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "sources": [
+        {
+          "title": "SatSig — INTELSAT 22",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "is-15",
+      "name": "Intelsat 15 (IS-15)",
+      "noradId": "35859",
+      "cosparId": "2009-067A",
+      "operator": "Intelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 85.2,
+      "band": ["Ku"],
+      "aviationRole": "ifc_candidate",
+      "relevanceToRoute": "medium",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "sources": [
+        {
+          "title": "SatSig — INTELSAT 15",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "eutelsat-konnect-vhts",
+      "name": "Eutelsat Konnect VHTS",
+      "noradId": "53807",
+      "cosparId": "2022-110A",
+      "operator": "Eutelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 2.7,
+      "band": ["Ka"],
+      "aviationRole": "ifc_ecosystem",
+      "relevanceToRoute": "medium",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "note": "Eutelsat 航空方案强调 OneWeb LEO + GEO 多轨；Konnect 为 GEO Ka 容量",
+      "sources": [
+        {
+          "title": "SatSig — EUTELSAT KONNECT VHTS",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "Eutelsat Aviation",
+          "url": "https://www.eutelsat.com/satellite-services/aviation",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "eutelsat-10b",
+      "name": "Eutelsat 10B",
+      "noradId": "54253",
+      "cosparId": "2022-157A",
+      "operator": "Eutelsat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 10.0,
+      "band": ["Ku", "Ka"],
+      "aviationRole": "ifc_ecosystem",
+      "relevanceToRoute": "medium",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "sources": [
+        {
+          "title": "SatSig — EUTELSAT 10B",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "i4-f1",
+      "name": "Inmarsat-4 F1 (legacy L-band)",
+      "noradId": "28899",
+      "cosparId": "2005-009A",
+      "operator": "Inmarsat / Viasat",
+      "orbitType": "GEO",
+      "subSatelliteLongitudeDeg": 178.1,
+      "band": ["L"],
+      "aviationRole": "legacy_safety_bgan",
+      "relevanceToRoute": "low",
+      "status": "operational",
+      "recommendedForElevation": false,
+      "note": "Classic Aero / SwiftBroadband 时代 L 波段，非当前 Ka 宽带主分析对象",
+      "sources": [
+        {
+          "title": "SatSig — INMARSAT 4-F1",
+          "url": "https://www.satsig.net/sslist.htm",
+          "accessed": "2026-06-08"
+        }
+      ]
+    }
+  ],
+
+  "leoConstellations": [
+    {
+      "id": "starlink",
+      "name": "Starlink",
+      "operator": "SpaceX",
+      "orbitType": "LEO",
+      "altitudeKmNominal": 550,
+      "inclinationDegNominal": 53,
+      "band": ["Ku", "Ka"],
+      "aviationProduct": "Starlink Aviation",
+      "relevanceToRoute": "candidate",
+      "status": "operational",
+      "celestrakGroup": "starlink",
+      "celestrakUrl": "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=json",
+      "objectCountApprox": "7000+",
+      "recommendedForTleLoad": true,
+      "projectFieldInDataJs": "publicSatelliteFeeds",
+      "alongTrackStatsImplemented": false,
+      "note": "CelesTrak 按 GROUP 返回整星座 GP 元数据；项目用 satellite.js 传播，未做航路逐段 LEO 可见性统计",
+      "sources": [
+        {
+          "title": "CelesTrak — Starlink GP JSON",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=json",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "CelesTrak GP data formats",
+          "url": "https://www.celestrak.org/NORAD/documentation/gp-data-formats.php",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "Starlink Aviation",
+          "url": "https://www.starlink.com/aviation",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "oneweb",
+      "name": "OneWeb (Eutelsat OneWeb)",
+      "operator": "Eutelsat",
+      "orbitType": "LEO",
+      "altitudeKmNominal": 1200,
+      "inclinationDegNominal": 87,
+      "band": ["Ku"],
+      "aviationProduct": "Eutelsat OneWeb Aviation",
+      "relevanceToRoute": "candidate",
+      "status": "operational",
+      "celestrakGroup": "oneweb",
+      "celestrakUrl": "https://celestrak.org/NORAD/elements/gp.php?GROUP=oneweb&FORMAT=json",
+      "objectCountApprox": "600+",
+      "recommendedForTleLoad": true,
+      "projectFieldInDataJs": "publicSatelliteFeeds",
+      "alongTrackStatsImplemented": false,
+      "sources": [
+        {
+          "title": "CelesTrak — OneWeb GP JSON",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=oneweb&FORMAT=json",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "Eutelsat Aviation — OneWeb LEO",
+          "url": "https://www.eutelsat.com/satellite-services/aviation",
+          "accessed": "2026-06-08"
+        }
+      ]
+    },
+    {
+      "id": "iridium-next",
+      "name": "Iridium NEXT",
+      "operator": "Iridium",
+      "orbitType": "LEO",
+      "altitudeKmNominal": 780,
+      "inclinationDegNominal": 86.4,
+      "band": ["L"],
+      "aviationProduct": "Iridium Certus Aviation",
+      "relevanceToRoute": "operational_comms_not_passenger_broadband",
+      "status": "operational",
+      "celestrakGroup": "iridium-NEXT",
+      "celestrakUrl": "https://celestrak.org/NORAD/elements/gp.php?GROUP=iridium-NEXT&FORMAT=json",
+      "objectCountApprox": 66,
+      "recommendedForTleLoad": false,
+      "projectFieldInDataJs": null,
+      "note": "项目 providers 已列 Iridium Certus；publicSatelliteFeeds 尚未接入，可按需追加",
+      "sources": [
+        {
+          "title": "CelesTrak — Iridium NEXT group",
+          "url": "https://celestrak.org/NORAD/elements/gp.php?GROUP=iridium-NEXT&FORMAT=json",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "CelesTrak — Communications satellite groups",
+          "url": "https://www.celestrak.org/NORAD/elements/",
+          "accessed": "2026-06-08"
+        },
+        {
+          "title": "Iridium Certus Aviation",
+          "url": "https://ifp.iridium.com/iridium-certus-aviation/",
+          "accessed": "2026-06-08"
+        }
+      ]
+    }
+  ],
+
+  "excludedFromPrimaryAnalysis": [
+    {
+      "category": "MEO",
+      "examples": ["SES O3b / O3b mPOWER"],
+      "reason": "用户查询聚焦 GEO/LEO；MEO 在项目中仅作 orbitShells 对比层",
+      "sourceUrl": "https://www.ses.com/v2/network-and-technology/meo/o3b-mpower"
+    },
+    {
+      "category": "GNSS",
+      "examples": ["GPS", "GLONASS", "Galileo", "BeiDou"],
+      "reason": "导航星座，非乘客宽带 IFC 分析对象"
+    },
+    {
+      "category": "Future LEO",
+      "examples": ["Telesat Lightspeed", "Amazon Kuiper"],
+      "reason": "公开 TLE 组存在但航空 IFC 大规模部署尚未与 PVG-CDG 样本航路绑定"
+    }
+  ]
+}

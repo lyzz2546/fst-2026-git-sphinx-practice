@@ -1,0 +1,29 @@
+{
+  "source": "OpenSky /states/all continuous sampler",
+  "captureLog": "data/captures/adsb-route-samples.jsonl",
+  "builtAt": "2026-06-13T02:35:35Z",
+  "totalSamples": 63,
+  "groups": 5,
+  "exportedTracks": [
+    {
+      "routeId": "PVG-CDG-AF",
+      "icao24": "394a03",
+      "callsign": "AFR111",
+      "samples": 55,
+      "trackFile": "data/tracks/captured/pvg-cdg-af-afr111-394a03.json",
+      "startTimeUnix": 1781311203,
+      "endTimeUnix": 1781318134
+    },
+    {
+      "routeId": "CDG-PVG-MU",
+      "icao24": "780f3b",
+      "callsign": "CES570",
+      "samples": 5,
+      "trackFile": "data/tracks/captured/cdg-pvg-mu-ces570-780f3b.json",
+      "startTimeUnix": 1781314598,
+      "endTimeUnix": 1781314852
+    }
+  ],
+  "momentSnapshot": "data/captures/aircraft-moment-snapshot.json",
+  "nextStep": "Use an exported track JSON for whole-route geometry and the moment snapshot for the aircraft marker."
+}

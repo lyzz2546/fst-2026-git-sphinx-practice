@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "flightId": "CES570 OpenSky ADS-B capture",
+    "routeId": "CDG-PVG-MU",
+    "callsign": "CES570",
+    "icao24": "780f3b",
+    "startTimeUnix": 1781314598,
+    "endTimeUnix": 1781314852,
+    "sampleCount": 5,
+    "source": "OpenSky /states/all continuous sampler (ADS-B position_source=0)",
+    "fetchedAtFirst": "2026-06-13T01:36:44Z",
+    "fetchedAtLast": "2026-06-13T01:40:54Z",
+    "completeFlight": false,
+    "note": "Completeness depends on sampler runtime and OpenSky receiver coverage."
+  },
+  "points": [
+    {
+      "t": 0.0,
+      "lat": 57.2939,
+      "lon": 82.4717,
+      "alt": 10058.4,
+      "gs": 901,
+      "hdg": 82.1
+    },
+    {
+      "t": 1.02,
+      "lat": 57.3075,
+      "lon": 82.7223,
+      "alt": 10058.4,
+      "gs": 905,
+      "hdg": 93.3
+    },
+    {
+      "t": 1.82,
+      "lat": 57.2951,
+      "lon": 82.9198,
+      "alt": 10058.4,
+      "gs": 907,
+      "hdg": 96.9
+    },
+    {
+      "t": 3.2,
+      "lat": 57.2627,
+      "lon": 83.2614,
+      "alt": 10058.4,
+      "gs": 903,
+      "hdg": 107.8
+    },
+    {
+      "t": 4.23,
+      "lat": 57.2202,
+      "lon": 83.5062,
+      "alt": 10058.4,
+      "gs": 904,
+      "hdg": 107.7
+    }
+  ]
+}

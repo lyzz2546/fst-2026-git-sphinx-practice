@@ -1,0 +1,559 @@
+{
+  "source": "OpenSky historical REST API",
+  "builtAt": "2026-06-13T02:49:25Z",
+  "daysSearched": 30,
+  "results": {
+    "PVG-CDG-MU": [],
+    "PVG-CDG-AF": [],
+    "CDG-PVG-MU": [
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES554",
+        "icao24": "780f39",
+        "file": "data/tracks/history/cdg-pvg-mu-ces554-780f39-20260610.json",
+        "pointCount": 139,
+        "durationMinutes": 560.9,
+        "trackDistanceKm": 8436,
+        "maxGapMinutes": 294.0,
+        "startDistanceFromDepartureKm": 3,
+        "endDistanceFromArrivalKm": 998,
+        "likelyComplete": false,
+        "score": 1754.7
+      },
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES554",
+        "icao24": "780d9c",
+        "file": "data/tracks/history/cdg-pvg-mu-ces554-780d9c-20260604.json",
+        "pointCount": 198,
+        "durationMinutes": 345.9,
+        "trackDistanceKm": 5344,
+        "maxGapMinutes": 137.7,
+        "startDistanceFromDepartureKm": 3,
+        "endDistanceFromArrivalKm": 4041,
+        "likelyComplete": false,
+        "score": 1688.6
+      },
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES554",
+        "icao24": "780d9c",
+        "file": "data/tracks/history/cdg-pvg-mu-ces554-780d9c-20260601.json",
+        "pointCount": 216,
+        "durationMinutes": 134.3,
+        "trackDistanceKm": 1957,
+        "maxGapMinutes": 21.6,
+        "startDistanceFromDepartureKm": 3,
+        "endDistanceFromArrivalKm": 7432,
+        "likelyComplete": false,
+        "score": 1499.5
+      },
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES570",
+        "icao24": "780f3b",
+        "file": "data/tracks/history/cdg-pvg-mu-ces570-780f3b-20260604.json",
+        "pointCount": 174,
+        "durationMinutes": 384.0,
+        "trackDistanceKm": 5780,
+        "maxGapMinutes": 277.5,
+        "startDistanceFromDepartureKm": 5,
+        "endDistanceFromArrivalKm": 3551,
+        "likelyComplete": false,
+        "score": 1177.1
+      }
+    ],
+    "CDG-PVG-AF": [
+      {
+        "routeId": "CDG-PVG-AF",
+        "callsign": "AFR116",
+        "icao24": "3965a8",
+        "file": "data/tracks/history/cdg-pvg-af-afr116-3965a8-20260610.json",
+        "pointCount": 314,
+        "durationMinutes": 622.3,
+        "trackDistanceKm": 9666,
+        "maxGapMinutes": 348.8,
+        "startDistanceFromDepartureKm": 2,
+        "endDistanceFromArrivalKm": 1000,
+        "likelyComplete": false,
+        "score": 3205.2
+      },
+      {
+        "routeId": "CDG-PVG-AF",
+        "callsign": "AFR116",
+        "icao24": "3965a9",
+        "file": "data/tracks/history/cdg-pvg-af-afr116-3965a9-20260609.json",
+        "pointCount": 209,
+        "durationMinutes": 618.4,
+        "trackDistanceKm": 9567,
+        "maxGapMinutes": 349.5,
+        "startDistanceFromDepartureKm": 2,
+        "endDistanceFromArrivalKm": 997,
+        "likelyComplete": false,
+        "score": 2348.1
+      },
+      {
+        "routeId": "CDG-PVG-AF",
+        "callsign": "AFR116",
+        "icao24": "394a03",
+        "file": "data/tracks/history/cdg-pvg-af-afr116-394a03-20260608.json",
+        "pointCount": 208,
+        "durationMinutes": 615.9,
+        "trackDistanceKm": 9121,
+        "maxGapMinutes": 468.0,
+        "startDistanceFromDepartureKm": 2,
+        "endDistanceFromArrivalKm": 997,
+        "likelyComplete": false,
+        "score": 1936.5
+      }
+    ]
+  },
+  "bestByRoute": {
+    "PVG-CDG-MU": null,
+    "PVG-CDG-AF": null,
+    "CDG-PVG-MU": {
+      "routeId": "CDG-PVG-MU",
+      "callsign": "CES554",
+      "icao24": "780f39",
+      "file": "data/tracks/history/cdg-pvg-mu-ces554-780f39-20260610.json",
+      "pointCount": 139,
+      "durationMinutes": 560.9,
+      "trackDistanceKm": 8436,
+      "maxGapMinutes": 294.0,
+      "startDistanceFromDepartureKm": 3,
+      "endDistanceFromArrivalKm": 998,
+      "likelyComplete": false,
+      "score": 1754.7
+    },
+    "CDG-PVG-AF": {
+      "routeId": "CDG-PVG-AF",
+      "callsign": "AFR116",
+      "icao24": "3965a8",
+      "file": "data/tracks/history/cdg-pvg-af-afr116-3965a8-20260610.json",
+      "pointCount": 314,
+      "durationMinutes": 622.3,
+      "trackDistanceKm": 9666,
+      "maxGapMinutes": 348.8,
+      "startDistanceFromDepartureKm": 2,
+      "endDistanceFromArrivalKm": 1000,
+      "likelyComplete": false,
+      "score": 3205.2
+    }
+  },
+  "errors": [
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "394a09",
+        "firstSeen": 1780868977,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780905239,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4472,
+        "estDepartureAirportVertDistance": 25,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=394a09&time=1780887108: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a9",
+        "firstSeen": 1780782681,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780818348,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1912,
+        "estDepartureAirportVertDistance": 71,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a9&time=1780800514: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "392af9",
+        "firstSeen": 1780746241,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780759528,
+        "estArrivalAirport": null,
+        "callsign": "AFR1162 ",
+        "estDepartureAirportHorizDistance": 2044,
+        "estDepartureAirportVertDistance": 124,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=392af9&time=1780752884: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965b4",
+        "firstSeen": 1780695695,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780732889,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 2013,
+        "estDepartureAirportVertDistance": 162,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965b4&time=1780714292: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a8",
+        "firstSeen": 1780610410,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780647105,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1937,
+        "estDepartureAirportVertDistance": 154,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a8&time=1780628757: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965b4",
+        "firstSeen": 1780523177,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780559069,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1903,
+        "estDepartureAirportVertDistance": 208,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965b4&time=1780541123: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a9",
+        "firstSeen": 1780441805,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780478478,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1900,
+        "estDepartureAirportVertDistance": 162,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a9&time=1780460141: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a8",
+        "firstSeen": 1780265456,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780279821,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1942,
+        "estDepartureAirportVertDistance": 55,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a8&time=1780272638: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a9",
+        "firstSeen": 1780179323,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780193862,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1930,
+        "estDepartureAirportVertDistance": 101,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a9&time=1780186592: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a8",
+        "firstSeen": 1780092068,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780128142,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4359,
+        "estDepartureAirportVertDistance": 2,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a8&time=1780110105: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949f7",
+        "firstSeen": 1780004493,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1780040845,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4382,
+        "estDepartureAirportVertDistance": 40,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949f7&time=1780022669: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "394a03",
+        "firstSeen": 1779919215,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779955359,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4755,
+        "estDepartureAirportVertDistance": 63,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=394a03&time=1779937287: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949f9",
+        "firstSeen": 1779832806,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779869878,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4781,
+        "estDepartureAirportVertDistance": 48,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949f9&time=1779851342: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949ef",
+        "firstSeen": 1779573200,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779588709,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4931,
+        "estDepartureAirportVertDistance": 25,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949ef&time=1779580954: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a8",
+        "firstSeen": 1779487367,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779502256,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4684,
+        "estDepartureAirportVertDistance": 10,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a8&time=1779494811: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949e3",
+        "firstSeen": 1779399989,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779415902,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 4650,
+        "estDepartureAirportVertDistance": 25,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949e3&time=1779407945: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949ed",
+        "firstSeen": 1779314183,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779352068,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1924,
+        "estDepartureAirportVertDistance": 12,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949ed&time=1779333125: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "394a03",
+        "firstSeen": 1779228123,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779265379,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1943,
+        "estDepartureAirportVertDistance": 139,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=394a03&time=1779246751: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949ee",
+        "firstSeen": 1779140992,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779178963,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1916,
+        "estDepartureAirportVertDistance": 71,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949ee&time=1779159977: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949e5",
+        "firstSeen": 1779057363,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779094169,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1923,
+        "estDepartureAirportVertDistance": 124,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949e5&time=1779075766: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949e8",
+        "firstSeen": 1778968375,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1779006469,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1942,
+        "estDepartureAirportVertDistance": 170,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949e8&time=1778987422: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3965a8",
+        "firstSeen": 1778882055,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1778897480,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1978,
+        "estDepartureAirportVertDistance": 139,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3965a8&time=1778889767: b'Too many requests'"
+    },
+    {
+      "routeId": "CDG-PVG-AF",
+      "flight": {
+        "icao24": "3949f4",
+        "firstSeen": 1778795897,
+        "estDepartureAirport": "LFPG",
+        "lastSeen": 1778804098,
+        "estArrivalAirport": null,
+        "callsign": "AFR116  ",
+        "estDepartureAirportHorizDistance": 1982,
+        "estDepartureAirportVertDistance": 185,
+        "estArrivalAirportHorizDistance": null,
+        "estArrivalAirportVertDistance": null,
+        "departureAirportCandidatesCount": 2,
+        "arrivalAirportCandidatesCount": 0
+      },
+      "error": "HTTP 429 for https://opensky-network.org/api/tracks/all?icao24=3949f4&time=1778799997: b'Too many requests'"
+    }
+  ]
+}

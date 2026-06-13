@@ -45,6 +45,12 @@ Yang Zhanxiang's Coursework Site
        <p>Online API use, Ollama local model deployment, and VS Code integration.</p>
        <a href="assignment_3.html">Open report</a>
      </article>
+     <article class="showcase-card">
+       <span class="card-status">AI App</span>
+       <h2>Assignment 4</h2>
+       <p>AeroSat Link Explorer, an AI-assisted academic application for satellite connectivity analysis along PVG-CDG routes.</p>
+       <a href="assignment_4.html">Open report</a>
+     </article>
    </section>
 
 .. toctree::
@@ -61,6 +67,8 @@ Yang Zhanxiang's Coursework Site
 
    assignment_1
    assignment_3
+   assignment_4
+   assignment_4_zh
    air_battle
    minesweeper
    game_2048

@@ -27,9 +27,10 @@
     <a href="assignment_3.html">View Assignment 3 Report</a>
   </article>
 
-  <article class="assignment-card assignment-card-muted">
-    <span class="card-status">Planned</span>
+  <article class="assignment-card">
+    <span class="card-status">Completed</span>
     <h2>Assignment 4</h2>
-    <p>This section is reserved for future course work.</p>
+    <p>AI-assisted academic application: AeroSat Link Explorer for PVG-CDG satellite connectivity analysis.</p>
+    <a href="assignment_4.html">View Assignment 4 Report</a>
   </article>
 </section>

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AeroSat Link Explorer</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div>
+            <h1>AeroSat Link Explorer</h1>
+            <p>PVG-CDG satellite connectivity study</p>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Page sections">
+          <a class="active" href="#view1">View 1 · Route Map</a>
+          <a href="#analysis">Trajectory &amp; Link Analysis</a>
+          <a href="#link-geometry">Link Geometry</a>
+          <a href="#view2">View 2 · Globe</a>
+        </nav>
+
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Assignment 4 / Agent-Assisted Application</p>
+            <h2>Aircraft Satellite Connectivity Explorer</h2>
+          </div>
+          <div class="top-actions">
+            <a class="ghost-button" href="./docs/report.md">Report</a>
+            <button class="ghost-button" id="sourceBtn" type="button">Sources</button>
+          </div>
+        </header>
+
+        <section class="hero-grid" id="maps">
+          <section class="panel map-panel" id="view1">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">View 1 / Flat Earth Layer</p>
+                <h3 id="mapPanelTitle">Public Route Map: Shanghai Pudong to Paris CDG</h3>
+              </div>
+              <div class="status-pill">ADS-B-style track with best-GEO elevation overlay</div>
+            </div>
+            <div class="map-toolbar">
+              <div class="map-toolbar-group">
+                <span class="toolbar-label">Route</span>
+                <select id="routeSelect" class="route-select" aria-label="Select flight route"></select>
+              </div>
+              <div class="map-toolbar-group">
+                <span class="toolbar-label">Map layer</span>
+                <button class="segmented active" data-map-mode="route" type="button">Track</button>
+                <button class="segmented" data-map-mode="corridor" type="button">Connectivity Corridor</button>
+                <button class="segmented" data-map-mode="aircraft" type="button">Aircraft Traffic</button>
+              </div>
+            </div>
+            <div class="map-layer-toolbar hidden" id="aircraftLayerToolbar" aria-label="Aircraft traffic map layers">
+              <span class="toolbar-label">Traffic</span>
+              <label class="layer-toggle">
+                <input id="showOnCorridorAircraftToggle" type="checkbox" checked />
+                Corridor context (max 15)
+              </label>
+              <label class="layer-toggle">
+                <input id="showRouteFlightsOnlyToggle" type="checkbox" />
+                Route flight only
+              </label>
+              <p id="aircraftStatusBar" class="aircraft-status-bar" aria-live="polite">ADS-B: loading…</p>
+            </div>
+            <div class="map-layer-toolbar" aria-label="GEO satellite map layers">
+              <span class="toolbar-label">GEO layers</span>
+              <label class="layer-toggle">
+                <input id="showRouteGeoToggle" type="checkbox" checked />
+                Route-serving GX (Eurasia slots)
+              </label>
+              <label class="layer-toggle">
+                <input id="showFleetGeoToggle" type="checkbox" />
+                Other GX fleet slots (e.g. Americas)
+              </label>
+            </div>
+            <div class="data-proof-row">
+              <article>
+                <span>Route existence</span>
+                <strong>Published PVG-CDG direct route</strong>
+                <a href="https://www.directflights.com/PVG-CDG" target="_blank" rel="noreferrer">Directflights source</a>
+              </article>
+              <article>
+                <span>Airport coordinates</span>
+                <strong>PVG 31.143378, 121.805214 / CDG 49.008960, 2.554117</strong>
+                <a href="https://ourairports.com/data/" target="_blank" rel="noreferrer">OurAirports source</a>
+              </article>
+              <article id="trajectorySourceProof">
+                <span>Trajectory source</span>
+                <strong>Loading track metadata…</strong>
+                <small>Updates when you change the route selector.</small>
+              </article>
+            </div>
+            <div class="flat-map-wrap">
+              <div id="routeMap" role="img" aria-label="Dark aviation-style map showing PVG-CDG route and aircraft traffic"></div>
+              <div id="aircraftTrafficBanner" class="aircraft-traffic-banner hidden" aria-live="polite"></div>
+              <button type="button" id="aircraftBannerRecall" class="aircraft-banner-recall hidden" aria-label="Show aircraft data status">Status</button>
+              <div id="aircraftTooltip" class="aircraft-tooltip hidden" role="tooltip"></div>
+              <div id="geoSatTooltip" class="aircraft-tooltip geo-sat-tooltip hidden" role="tooltip"></div>
+              <div id="mapNote" class="map-note">
+                Basemap: Natural Earth / world-atlas vector map with horizontal world wrap. Aircraft: OpenSky live API first; on failure, local JSON or bundled cache.
+              </div>
+              <button type="button" id="mapNoteRecall" class="map-note-recall hidden" aria-label="Show basemap note">Note</button>
+            </div>
+            <div class="metric-row" id="routeMetricRow" aria-live="polite"></div>
+          </section>
+
+          <section class="panel analysis-panel" id="analysis">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Trajectory &amp; Link Analysis</p>
+                <h3>ADS-B Profile and Satellite Coverage along the Track</h3>
+              </div>
+              <div class="status-pill" id="analysisStatus">Loading sample track...</div>
+            </div>
+            <div id="airspaceContextPanel" class="airspace-context-panel" aria-live="polite"></div>
+            <div class="route-stat-grid" id="routeStatGrid"></div>
+            <div class="profile-chart-wrap">
+              <canvas id="profileChart" aria-label="Altitude and ground-speed profile along the PVG-CDG track"></canvas>
+            </div>
+            <div class="elevation-diagram-panel" id="link-geometry" aria-label="GEO elevation geometry at selected track point">
+              <div class="elevation-diagram-header">
+                <div>
+                  <span class="eyebrow">Link geometry (side view, not to scale)</span>
+                  <h4>GEO elevation at track sample</h4>
+                </div>
+                <label class="elevation-track-control">
+                  <span id="elevationTrackLabel">Sample 0</span>
+                  <input id="elevationTrackSlider" type="range" min="0" max="0" value="0" step="1" />
+                </label>
+              </div>
+              <div class="elevation-diagram-body">
+                <div id="elevationDiagramSvg" class="elevation-diagram-svg" role="img" aria-label="Side-view schematic of aircraft, GEO satellite, and ground station"></div>
+                <div id="elevationDiagramMeta" class="elevation-diagram-meta"></div>
+              </div>
+            </div>
+            <div class="coverage-legend">
+              <span class="eyebrow">Route-serving GX elevation tier on the track line</span>
+              <ul id="geoTierLegend"></ul>
+            </div>
+            <div class="per-satellite-table-wrap">
+              <table class="per-satellite-table" id="perSatelliteTable">
+                <thead>
+                  <tr>
+                    <th>GEO satellite</th>
+                    <th>Sub-sat &deg;E</th>
+                    <th>Coverage (&ge; 10&deg; elev.)</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel orbit-panel" id="view2">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">View 2 / Earth-Centered Layer</p>
+                <h3 id="globePanelTitle">Orbital Shell View: Route, Aircraft, and Candidate Networks</h3>
+              </div>
+              <div class="status-pill">Drag to rotate · route colour = GEO link quality</div>
+            </div>
+            <div class="orbit-toolbar">
+              <button class="segmented active" data-orbit-mode="shells" type="button">Shells</button>
+              <button class="segmented" data-orbit-mode="leo" type="button">LEO Focus</button>
+              <button class="segmented" data-orbit-mode="service" type="button">Service Candidates</button>
+            </div>
+            <div class="data-proof-row">
+              <article>
+                <span>Satellite identities</span>
+                <strong>Starlink / OneWeb from CelesTrak GP feeds</strong>
+                <a href="https://www.celestrak.org/NORAD/documentation/gp-data-formats.php" target="_blank" rel="noreferrer">CelesTrak source</a>
+              </article>
+              <article>
+                <span>Position method</span>
+                <strong>Browser-side orbital estimate from public elements</strong>
+                <small>Educational visualization, not certified SGP4 operations data</small>
+              </article>
+              <article>
+                <span>Service claim</span>
+                <strong>Candidate networks only</strong>
+                <small>No public proof of exact aircraft-to-satellite link</small>
+              </article>
+            </div>
+            <div class="orbit-stage">
+              <div id="globeMap" aria-label="Textured Earth globe showing route, orbit shells, and public satellites"></div>
+              <div class="orbit-readout">
+                <p class="eyebrow">Public Satellite Data</p>
+                <div>
+                  <h4 id="satelliteStatus">Using curated provider facts. Live CelesTrak loading is optional.</h4>
+                  <p id="satelliteSample" class="satellite-sample">No live satellite records loaded yet.</p>
+                </div>
+                <button class="ghost-button" id="loadSatellitesBtn" type="button">Load CelesTrak Starlink / OneWeb</button>
+              </div>
+            </div>
+            <div class="orbit-legend" id="orbitLegend"></div>
+          </section>
+        </section>
+
+        <section class="content-grid">
+          <section class="panel" id="networks">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Candidate Networks</p>
+                <h3>Public Aviation Satellite Connectivity Candidates</h3>
+              </div>
+              <button class="ghost-button" id="rankBtn" type="button">Rank by Fit</button>
+            </div>
+            <div class="provider-list" id="providerList"></div>
+          </section>
+
+          <section class="panel" id="evidence">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">Evidence Board</p>
+                <h3>Public Data Chain</h3>
+              </div>
+            </div>
+            <div class="evidence-chain" id="evidenceChain"></div>
+          </section>
+        </section>
+
+        <section class="panel" id="limits">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Verification Plan</p>
+              <h3>What the App Can and Cannot Claim</h3>
+            </div>
+          </div>
+          <div class="verification-grid">
+            <article>
+              <h4>Public Facts Used</h4>
+              <p>Route pair, airport coordinates, route distance, public IFC provider statements, and CelesTrak public orbit feeds.</p>
+            </article>
+            <article>
+              <h4>Computed Visualization</h4>
+              <p>The route, corridor, orbital shells, and simplified satellite points are analysis layers built from public data.</p>
+            </article>
+            <article>
+              <h4>Not Publicly Confirmed</h4>
+              <p>Exact flight-to-provider contract, exact satellite handoff, beam assignment, gateway, and terminal network logs.</p>
+            </article>
+            <article>
+              <h4>Next Validation Step</h4>
+              <p>Add licensed ADS-B history, airline Wi-Fi installation data, provider coverage maps, and regulatory permissions.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="sourceDialog">
+      <form method="dialog">
+        <div class="dialog-heading">
+          <h3>Public Sources</h3>
+          <button aria-label="Close" type="submit">x</button>
+        </div>
+        <div id="sourceList" class="source-list"></div>
+      </form>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/satellite.js@5.0.0/dist/satellite.min.js"></script>
+    <script src="./data/opensky-history-display-snapshot.js"></script>
+    <script src="./data/opensky-display-snapshot.js"></script>
+    <script src="./src/data.js?v=route-sync-20260612"></script>
+    <script src="./src/app.js?v=modeled-route-evidence-20260613"></script>
+  </body>
+</html>

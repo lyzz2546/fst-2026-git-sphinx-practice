@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "source": "opensky-history-evidence-midpoints",
+    "fetchedAt": "2026-06-13T12:28:40Z",
+    "routeFlightSource": "same-selected-openSky-history-midpoint",
+    "routeFlightsFound": [
+      {
+        "routeId": "CDG-PVG-AF",
+        "callsign": "AFR116",
+        "icao24": "3965a8"
+      },
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES554",
+        "icao24": "780f39"
+      },
+      {
+        "routeId": "PVG-CDG-AF",
+        "callsign": "AFR111",
+        "icao24": "394a03"
+      },
+      {
+        "routeId": "PVG-CDG-MU",
+        "callsign": "CES219",
+        "icao24": "780f39"
+      }
+    ],
+    "routeFlightCount": 4,
+    "contextAircraftCount": 0,
+    "note": "One midpoint from each selected OpenSky historical file; route geometry is modeled separately because the history files have large coverage gaps."
+  },
+  "states": [
+    [
+      "3965a8",
+      "AFR116  ",
+      null,
+      1781131997,
+      1781131997,
+      10.6436,
+      47.37,
+      9144.0,
+      false,
+      288.06,
+      97.0,
+      0,
+      null,
+      9144.0,
+      null,
+      false,
+      0
+    ],
+    [
+      "780f39",
+      "CES554  ",
+      null,
+      1781092881,
+      1781092881,
+      2.5113,
+      49.4708,
+      3657.0,
+      false,
+      186.94,
+      24.0,
+      0,
+      null,
+      3657.0,
+      null,
+      false,
+      0
+    ],
+    [
+      "394a03",
+      "AFR111  ",
+      null,
+      1781317424,
+      1781317424,
+      6.4242,
+      49.4698,
+      10363.0,
+      false,
+      218.06,
+      268.0,
+      0,
+      null,
+      10363.0,
+      null,
+      false,
+      0
+    ],
+    [
+      "780f39",
+      "CES219  ",
+      null,
+      1781317203,
+      1781317203,
+      13.8841,
+      53.218,
+      9753.0,
+      false,
+      234.17,
+      239.0,
+      0,
+      null,
+      9753.0,
+      null,
+      false,
+      0
+    ]
+  ]
+}

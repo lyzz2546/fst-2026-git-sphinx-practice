@@ -1,0 +1,1314 @@
+{
+  "meta": {
+    "flightId": "AFR116 OpenSky historical track",
+    "routeId": "CDG-PVG-AF",
+    "callsign": "AFR116",
+    "icao24": "3965a8",
+    "departureAirport": "LFPG",
+    "arrivalAirport": "ZSPD",
+    "firstSeenUnix": 1781129287,
+    "lastSeenUnix": 1781166626,
+    "startTimeUnix": 1781129287.0,
+    "endTimeUnix": 1781166624.0,
+    "source": "Modeled complete route with OpenSky historical evidence",
+    "completeFlight": false,
+    "quality": {
+      "pointCount": 314,
+      "durationMinutes": 622.3,
+      "trackDistanceKm": 9666,
+      "maxGapMinutes": 348.8,
+      "startDistanceFromDepartureKm": 2,
+      "endDistanceFromArrivalKm": 1000,
+      "likelyComplete": false,
+      "score": 3205.2
+    },
+    "displayTrackType": "modeled-complete-with-opensky-evidence",
+    "rawOpenSkyFile": "data/tracks/history/cdg-pvg-af-afr116-3965a8-20260610.json",
+    "completedForDisplay": true,
+    "openSkyEvidencePointCount": 314,
+    "openSkyMaxGapMinutes": 348.8,
+    "openSkyLikelyComplete": false,
+    "modelPointCount": 140,
+    "connectorPointCount": 0,
+    "openSkyPointCount": 0,
+    "completedTrackDistanceKm": 10438,
+    "completedDurationMinutes": 675.0,
+    "publicReferences": [
+      {
+        "label": "OpenSky /tracks historical waypoint API",
+        "url": "https://openskynetwork.github.io/opensky-api/rest.html#track-by-aircraft"
+      },
+      {
+        "label": "Directflights PVG-CDG scheduled direct route",
+        "url": "https://www.directflights.com/PVG-CDG"
+      },
+      {
+        "label": "Directflights CDG-PVG scheduled direct route",
+        "url": "https://www.directflights.com/CDG-PVG"
+      }
+    ],
+    "connectorMethod": "No OpenSky gap connectors are drawn. The full displayed line is a smooth representative route model; sparse OpenSky historical waypoints are kept only as evidence metadata and for one aircraft sample position."
+  },
+  "points": [
+    {
+      "t": 0.0,
+      "lat": 49.00969,
+      "lon": 2.554117,
+      "alt": 50,
+      "gs": 0,
+      "hdg": 63.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 3.3,
+      "lat": 49.214154,
+      "lon": 3.181823,
+      "alt": 108.3,
+      "gs": 4.3,
+      "hdg": 126.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 8.17,
+      "lat": 48.809534,
+      "lon": 4.008654,
+      "alt": 392.2,
+      "gs": 25.2,
+      "hdg": 121.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 13.03,
+      "lat": 48.450327,
+      "lon": 4.876575,
+      "alt": 883.8,
+      "gs": 61.4,
+      "hdg": 117.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 17.9,
+      "lat": 48.138091,
+      "lon": 5.778947,
+      "alt": 1551.1,
+      "gs": 110.5,
+      "hdg": 113.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 22.76,
+      "lat": 47.863093,
+      "lon": 6.70324,
+      "alt": 2362.8,
+      "gs": 170.3,
+      "hdg": 113.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 27.63,
+      "lat": 47.59515,
+      "lon": 7.62745,
+      "alt": 3287.0,
+      "gs": 238.3,
+      "hdg": 114.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 32.5,
+      "lat": 47.313502,
+      "lon": 8.537805,
+      "alt": 4291.9,
+      "gs": 312.3,
+      "hdg": 115.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 37.37,
+      "lat": 47.021332,
+      "lon": 9.436005,
+      "alt": 5345.7,
+      "gs": 389.9,
+      "hdg": 116.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 42.23,
+      "lat": 46.720796,
+      "lon": 10.323267,
+      "alt": 6416.8,
+      "gs": 468.7,
+      "hdg": 116.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 47.1,
+      "lat": 46.413535,
+      "lon": 11.200637,
+      "alt": 7473.2,
+      "gs": 546.5,
+      "hdg": 117.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 51.97,
+      "lat": 46.100756,
+      "lon": 12.068908,
+      "alt": 8483.3,
+      "gs": 620.8,
+      "hdg": 117.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 56.84,
+      "lat": 45.783634,
+      "lon": 12.928962,
+      "alt": 9415.3,
+      "gs": 689.4,
+      "hdg": 117.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 61.7,
+      "lat": 45.468821,
+      "lon": 13.785898,
+      "alt": 10237.5,
+      "gs": 750.0,
+      "hdg": 116.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 66.57,
+      "lat": 45.158969,
+      "lon": 14.641752,
+      "alt": 10918.0,
+      "gs": 800.1,
+      "hdg": 116.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 71.44,
+      "lat": 44.85373,
+      "lon": 15.496307,
+      "alt": 11425.1,
+      "gs": 837.4,
+      "hdg": 116.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 76.31,
+      "lat": 44.552735,
+      "lon": 16.349416,
+      "alt": 11727.2,
+      "gs": 859.6,
+      "hdg": 115.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 81.17,
+      "lat": 44.258232,
+      "lon": 17.202552,
+      "alt": 11625.9,
+      "gs": 865.0,
+      "hdg": 114.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 86.04,
+      "lat": 43.974419,
+      "lon": 18.058551,
+      "alt": 11629.5,
+      "gs": 865.0,
+      "hdg": 113.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 90.91,
+      "lat": 43.700755,
+      "lon": 18.916927,
+      "alt": 11633.0,
+      "gs": 865.0,
+      "hdg": 112.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 95.78,
+      "lat": 43.436749,
+      "lon": 19.777244,
+      "alt": 11636.6,
+      "gs": 865.0,
+      "hdg": 111.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 100.64,
+      "lat": 43.182029,
+      "lon": 20.639132,
+      "alt": 11640.2,
+      "gs": 865.0,
+      "hdg": 110.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 105.51,
+      "lat": 42.938344,
+      "lon": 21.503477,
+      "alt": 11643.8,
+      "gs": 865.0,
+      "hdg": 109.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 110.38,
+      "lat": 42.709126,
+      "lon": 22.371872,
+      "alt": 11647.4,
+      "gs": 865.0,
+      "hdg": 108.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 115.25,
+      "lat": 42.493803,
+      "lon": 23.243734,
+      "alt": 11651.0,
+      "gs": 865.0,
+      "hdg": 107.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 120.11,
+      "lat": 42.291807,
+      "lon": 24.118551,
+      "alt": 11654.6,
+      "gs": 865.0,
+      "hdg": 105.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 124.98,
+      "lat": 42.102759,
+      "lon": 24.995904,
+      "alt": 11658.1,
+      "gs": 865.0,
+      "hdg": 104.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 129.85,
+      "lat": 41.926014,
+      "lon": 25.875374,
+      "alt": 11661.7,
+      "gs": 865.0,
+      "hdg": 103.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 134.71,
+      "lat": 41.761002,
+      "lon": 26.756611,
+      "alt": 11665.3,
+      "gs": 865.0,
+      "hdg": 102.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 139.58,
+      "lat": 41.607197,
+      "lon": 27.639317,
+      "alt": 11668.9,
+      "gs": 865.0,
+      "hdg": 101.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 144.45,
+      "lat": 41.464239,
+      "lon": 28.523253,
+      "alt": 11672.5,
+      "gs": 865.0,
+      "hdg": 101.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 149.32,
+      "lat": 41.33184,
+      "lon": 29.408208,
+      "alt": 11676.1,
+      "gs": 865.0,
+      "hdg": 100.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 154.18,
+      "lat": 41.209222,
+      "lon": 30.293962,
+      "alt": 11679.7,
+      "gs": 865.0,
+      "hdg": 99.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 159.05,
+      "lat": 41.096744,
+      "lon": 31.180479,
+      "alt": 11683.2,
+      "gs": 865.0,
+      "hdg": 98.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 163.92,
+      "lat": 40.99669,
+      "lon": 32.068181,
+      "alt": 11686.8,
+      "gs": 865.0,
+      "hdg": 97.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 168.79,
+      "lat": 40.908693,
+      "lon": 32.956859,
+      "alt": 11690.4,
+      "gs": 865.0,
+      "hdg": 96.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 173.65,
+      "lat": 40.831732,
+      "lon": 33.846237,
+      "alt": 11694.0,
+      "gs": 865.0,
+      "hdg": 95.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 178.52,
+      "lat": 40.765441,
+      "lon": 34.736133,
+      "alt": 11697.6,
+      "gs": 865.0,
+      "hdg": 94.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 183.39,
+      "lat": 40.708675,
+      "lon": 35.626369,
+      "alt": 11701.2,
+      "gs": 865.0,
+      "hdg": 93.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 188.26,
+      "lat": 40.660892,
+      "lon": 36.516833,
+      "alt": 11704.8,
+      "gs": 865.0,
+      "hdg": 92.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 193.12,
+      "lat": 40.622635,
+      "lon": 37.407507,
+      "alt": 11708.4,
+      "gs": 865.0,
+      "hdg": 92.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 197.99,
+      "lat": 40.595837,
+      "lon": 38.29847,
+      "alt": 11711.9,
+      "gs": 865.0,
+      "hdg": 91.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 202.86,
+      "lat": 40.580058,
+      "lon": 39.189608,
+      "alt": 11715.5,
+      "gs": 865.0,
+      "hdg": 90.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 207.73,
+      "lat": 40.575,
+      "lon": 40.080826,
+      "alt": 11719.1,
+      "gs": 865.0,
+      "hdg": 89.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 212.59,
+      "lat": 40.580369,
+      "lon": 40.972044,
+      "alt": 11722.7,
+      "gs": 865.0,
+      "hdg": 88.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 217.46,
+      "lat": 40.595879,
+      "lon": 41.863197,
+      "alt": 11726.3,
+      "gs": 865.0,
+      "hdg": 87.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 222.33,
+      "lat": 40.621252,
+      "lon": 42.75423,
+      "alt": 11729.9,
+      "gs": 865.0,
+      "hdg": 86.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 227.2,
+      "lat": 40.656219,
+      "lon": 43.645102,
+      "alt": 11733.5,
+      "gs": 865.0,
+      "hdg": 86.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 232.06,
+      "lat": 40.693127,
+      "lon": 44.536338,
+      "alt": 11737.0,
+      "gs": 865.0,
+      "hdg": 86.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 236.93,
+      "lat": 40.728149,
+      "lon": 45.428187,
+      "alt": 11740.6,
+      "gs": 865.0,
+      "hdg": 86.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 241.8,
+      "lat": 40.761329,
+      "lon": 46.320617,
+      "alt": 11744.2,
+      "gs": 865.0,
+      "hdg": 87.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 246.67,
+      "lat": 40.79271,
+      "lon": 47.213595,
+      "alt": 11747.8,
+      "gs": 865.0,
+      "hdg": 87.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 251.53,
+      "lat": 40.822335,
+      "lon": 48.107087,
+      "alt": 11751.4,
+      "gs": 865.0,
+      "hdg": 87.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 256.4,
+      "lat": 40.850244,
+      "lon": 49.001064,
+      "alt": 11755.0,
+      "gs": 865.0,
+      "hdg": 87.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 261.27,
+      "lat": 40.876478,
+      "lon": 49.895495,
+      "alt": 11758.6,
+      "gs": 865.0,
+      "hdg": 87.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 266.14,
+      "lat": 40.901076,
+      "lon": 50.790351,
+      "alt": 11762.2,
+      "gs": 865.0,
+      "hdg": 87.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 271.0,
+      "lat": 40.927279,
+      "lon": 51.685462,
+      "alt": 11765.7,
+      "gs": 865.0,
+      "hdg": 87.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 275.87,
+      "lat": 40.957751,
+      "lon": 52.58072,
+      "alt": 11769.3,
+      "gs": 865.0,
+      "hdg": 86.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 280.74,
+      "lat": 40.992496,
+      "lon": 53.476147,
+      "alt": 11772.9,
+      "gs": 865.0,
+      "hdg": 86.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 285.61,
+      "lat": 41.031516,
+      "lon": 54.371764,
+      "alt": 11776.5,
+      "gs": 865.0,
+      "hdg": 86.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 290.47,
+      "lat": 41.074815,
+      "lon": 55.267594,
+      "alt": 11780.1,
+      "gs": 865.0,
+      "hdg": 85.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 295.34,
+      "lat": 41.122399,
+      "lon": 56.163659,
+      "alt": 11783.7,
+      "gs": 865.0,
+      "hdg": 85.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 300.21,
+      "lat": 41.174317,
+      "lon": 57.059986,
+      "alt": 11787.3,
+      "gs": 865.0,
+      "hdg": 84.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 305.08,
+      "lat": 41.230587,
+      "lon": 57.956598,
+      "alt": 11790.8,
+      "gs": 865.0,
+      "hdg": 84.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 309.94,
+      "lat": 41.28963,
+      "lon": 58.85369,
+      "alt": 11794.4,
+      "gs": 865.0,
+      "hdg": 84.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 314.81,
+      "lat": 41.346131,
+      "lon": 59.751866,
+      "alt": 11798.0,
+      "gs": 865.0,
+      "hdg": 85.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 319.68,
+      "lat": 41.39983,
+      "lon": 60.651105,
+      "alt": 11798.4,
+      "gs": 865.0,
+      "hdg": 85.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 324.55,
+      "lat": 41.450715,
+      "lon": 61.551357,
+      "alt": 11794.8,
+      "gs": 865.0,
+      "hdg": 85.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 329.41,
+      "lat": 41.498773,
+      "lon": 62.452571,
+      "alt": 11791.2,
+      "gs": 865.0,
+      "hdg": 85.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 334.28,
+      "lat": 41.543993,
+      "lon": 63.354695,
+      "alt": 11787.6,
+      "gs": 865.0,
+      "hdg": 86.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 339.15,
+      "lat": 41.586361,
+      "lon": 64.257677,
+      "alt": 11784.0,
+      "gs": 865.0,
+      "hdg": 86.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 344.02,
+      "lat": 41.625868,
+      "lon": 65.161463,
+      "alt": 11780.5,
+      "gs": 865.0,
+      "hdg": 86.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 348.88,
+      "lat": 41.662232,
+      "lon": 66.066015,
+      "alt": 11776.9,
+      "gs": 865.0,
+      "hdg": 87.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 353.75,
+      "lat": 41.691085,
+      "lon": 66.971511,
+      "alt": 11773.3,
+      "gs": 865.0,
+      "hdg": 88.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 358.62,
+      "lat": 41.711214,
+      "lon": 67.877776,
+      "alt": 11769.7,
+      "gs": 865.0,
+      "hdg": 88.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 363.49,
+      "lat": 41.722533,
+      "lon": 68.78454,
+      "alt": 11766.1,
+      "gs": 865.0,
+      "hdg": 89.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 368.35,
+      "lat": 41.725,
+      "lon": 69.691521,
+      "alt": 11762.5,
+      "gs": 865.0,
+      "hdg": 90.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 373.22,
+      "lat": 41.718703,
+      "lon": 70.598441,
+      "alt": 11758.9,
+      "gs": 865.0,
+      "hdg": 91.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 378.09,
+      "lat": 41.70365,
+      "lon": 71.505023,
+      "alt": 11755.4,
+      "gs": 865.0,
+      "hdg": 91.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 382.96,
+      "lat": 41.679858,
+      "lon": 72.410995,
+      "alt": 11751.8,
+      "gs": 865.0,
+      "hdg": 92.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 387.82,
+      "lat": 41.647357,
+      "lon": 73.316084,
+      "alt": 11748.2,
+      "gs": 865.0,
+      "hdg": 92.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 392.69,
+      "lat": 41.609516,
+      "lon": 74.220311,
+      "alt": 11744.6,
+      "gs": 865.0,
+      "hdg": 93.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 397.56,
+      "lat": 41.568808,
+      "lon": 75.123766,
+      "alt": 11741.0,
+      "gs": 865.0,
+      "hdg": 93.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 402.43,
+      "lat": 41.525243,
+      "lon": 76.026395,
+      "alt": 11737.4,
+      "gs": 865.0,
+      "hdg": 93.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 407.29,
+      "lat": 41.478832,
+      "lon": 76.928144,
+      "alt": 11733.8,
+      "gs": 865.0,
+      "hdg": 93.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 412.16,
+      "lat": 41.429588,
+      "lon": 77.828962,
+      "alt": 11730.3,
+      "gs": 865.0,
+      "hdg": 94.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 417.03,
+      "lat": 41.377522,
+      "lon": 78.728796,
+      "alt": 11726.7,
+      "gs": 865.0,
+      "hdg": 94.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 421.9,
+      "lat": 41.322648,
+      "lon": 79.627597,
+      "alt": 11723.1,
+      "gs": 865.0,
+      "hdg": 94.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 426.76,
+      "lat": 41.264979,
+      "lon": 80.525313,
+      "alt": 11719.5,
+      "gs": 865.0,
+      "hdg": 94.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 431.63,
+      "lat": 41.204118,
+      "lon": 81.42183,
+      "alt": 11715.9,
+      "gs": 865.0,
+      "hdg": 95.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 436.5,
+      "lat": 41.139057,
+      "lon": 82.316959,
+      "alt": 11712.3,
+      "gs": 865.0,
+      "hdg": 95.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 441.37,
+      "lat": 41.069849,
+      "lon": 83.210626,
+      "alt": 11708.7,
+      "gs": 865.0,
+      "hdg": 95.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 446.23,
+      "lat": 40.996521,
+      "lon": 84.102747,
+      "alt": 11705.1,
+      "gs": 865.0,
+      "hdg": 96.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 451.1,
+      "lat": 40.919105,
+      "lon": 84.993245,
+      "alt": 11701.6,
+      "gs": 865.0,
+      "hdg": 96.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 455.97,
+      "lat": 40.837631,
+      "lon": 85.882042,
+      "alt": 11698.0,
+      "gs": 865.0,
+      "hdg": 97.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 460.84,
+      "lat": 40.752133,
+      "lon": 86.769063,
+      "alt": 11694.4,
+      "gs": 865.0,
+      "hdg": 97.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 465.7,
+      "lat": 40.662645,
+      "lon": 87.654236,
+      "alt": 11690.8,
+      "gs": 865.0,
+      "hdg": 97.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 470.57,
+      "lat": 40.569158,
+      "lon": 88.537483,
+      "alt": 11687.2,
+      "gs": 865.0,
+      "hdg": 98.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 475.44,
+      "lat": 40.470691,
+      "lon": 89.418531,
+      "alt": 11683.6,
+      "gs": 865.0,
+      "hdg": 98.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 480.31,
+      "lat": 40.366842,
+      "lon": 90.297146,
+      "alt": 11680.0,
+      "gs": 865.0,
+      "hdg": 99.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 485.17,
+      "lat": 40.25784,
+      "lon": 91.173303,
+      "alt": 11676.5,
+      "gs": 865.0,
+      "hdg": 99.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 490.04,
+      "lat": 40.143745,
+      "lon": 92.046909,
+      "alt": 11672.9,
+      "gs": 865.0,
+      "hdg": 99.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 494.91,
+      "lat": 40.024623,
+      "lon": 92.917875,
+      "alt": 11669.3,
+      "gs": 865.0,
+      "hdg": 100.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 499.78,
+      "lat": 39.900536,
+      "lon": 93.786117,
+      "alt": 11665.7,
+      "gs": 865.0,
+      "hdg": 100.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 504.64,
+      "lat": 39.771553,
+      "lon": 94.651556,
+      "alt": 11662.1,
+      "gs": 865.0,
+      "hdg": 101.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 509.51,
+      "lat": 39.637737,
+      "lon": 95.514115,
+      "alt": 11658.5,
+      "gs": 865.0,
+      "hdg": 101.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 514.38,
+      "lat": 39.499671,
+      "lon": 96.373785,
+      "alt": 11654.9,
+      "gs": 865.0,
+      "hdg": 101.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 519.25,
+      "lat": 39.359805,
+      "lon": 97.231265,
+      "alt": 11651.3,
+      "gs": 865.0,
+      "hdg": 101.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 524.11,
+      "lat": 39.218056,
+      "lon": 98.086512,
+      "alt": 11647.8,
+      "gs": 865.0,
+      "hdg": 102.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 528.98,
+      "lat": 39.074332,
+      "lon": 98.939478,
+      "alt": 11644.2,
+      "gs": 865.0,
+      "hdg": 102.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 533.85,
+      "lat": 38.928534,
+      "lon": 99.790115,
+      "alt": 11640.6,
+      "gs": 865.0,
+      "hdg": 102.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 538.72,
+      "lat": 38.780558,
+      "lon": 100.63837,
+      "alt": 11637.0,
+      "gs": 865.0,
+      "hdg": 102.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 543.58,
+      "lat": 38.63029,
+      "lon": 101.48419,
+      "alt": 11633.4,
+      "gs": 865.0,
+      "hdg": 102.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 548.45,
+      "lat": 38.477611,
+      "lon": 102.327516,
+      "alt": 11629.8,
+      "gs": 865.0,
+      "hdg": 103.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 553.32,
+      "lat": 38.321603,
+      "lon": 103.168043,
+      "alt": 11626.2,
+      "gs": 865.0,
+      "hdg": 103.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 558.19,
+      "lat": 38.157271,
+      "lon": 104.004136,
+      "alt": 11775.6,
+      "gs": 863.2,
+      "hdg": 104.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 563.05,
+      "lat": 37.983461,
+      "lon": 104.835194,
+      "alt": 11648.3,
+      "gs": 853.8,
+      "hdg": 105.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 567.92,
+      "lat": 37.799799,
+      "lon": 105.660827,
+      "alt": 11420.6,
+      "gs": 837.1,
+      "hdg": 106.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 572.79,
+      "lat": 37.605622,
+      "lon": 106.480453,
+      "alt": 11101.9,
+      "gs": 813.6,
+      "hdg": 107.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 577.66,
+      "lat": 37.400573,
+      "lon": 107.293636,
+      "alt": 10701.6,
+      "gs": 784.1,
+      "hdg": 108.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 582.52,
+      "lat": 37.184394,
+      "lon": 108.099982,
+      "alt": 10229.1,
+      "gs": 749.4,
+      "hdg": 109.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 587.39,
+      "lat": 36.956662,
+      "lon": 108.898975,
+      "alt": 9693.8,
+      "gs": 710.0,
+      "hdg": 110.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 592.26,
+      "lat": 36.720231,
+      "lon": 109.691507,
+      "alt": 9105.2,
+      "gs": 666.6,
+      "hdg": 110.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 597.13,
+      "lat": 36.476768,
+      "lon": 110.478274,
+      "alt": 8472.6,
+      "gs": 620.0,
+      "hdg": 111.5,
+      "source": "modeled-route"
+    },
+    {
+      "t": 601.99,
+      "lat": 36.22581,
+      "lon": 111.25891,
+      "alt": 7805.4,
+      "gs": 570.9,
+      "hdg": 112.3,
+      "source": "modeled-route"
+    },
+    {
+      "t": 606.86,
+      "lat": 35.966615,
+      "lon": 112.03281,
+      "alt": 7113.1,
+      "gs": 520.0,
+      "hdg": 113.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 611.73,
+      "lat": 35.698894,
+      "lon": 112.799728,
+      "alt": 6405.0,
+      "gs": 467.8,
+      "hdg": 113.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 616.6,
+      "lat": 35.421836,
+      "lon": 113.558973,
+      "alt": 5690.6,
+      "gs": 415.2,
+      "hdg": 114.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 621.46,
+      "lat": 35.135118,
+      "lon": 114.310126,
+      "alt": 4979.3,
+      "gs": 362.9,
+      "hdg": 115.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 626.33,
+      "lat": 34.838793,
+      "lon": 115.053019,
+      "alt": 4280.5,
+      "gs": 311.4,
+      "hdg": 116.8,
+      "source": "modeled-route"
+    },
+    {
+      "t": 631.2,
+      "lat": 34.530964,
+      "lon": 115.786207,
+      "alt": 3603.6,
+      "gs": 261.6,
+      "hdg": 118.2,
+      "source": "modeled-route"
+    },
+    {
+      "t": 636.07,
+      "lat": 34.209164,
+      "lon": 116.507735,
+      "alt": 2958.0,
+      "gs": 214.1,
+      "hdg": 119.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 640.93,
+      "lat": 33.869864,
+      "lon": 117.214604,
+      "alt": 2353.2,
+      "gs": 169.6,
+      "hdg": 121.7,
+      "source": "modeled-route"
+    },
+    {
+      "t": 645.8,
+      "lat": 33.512468,
+      "lon": 117.905567,
+      "alt": 1798.5,
+      "gs": 128.7,
+      "hdg": 122.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 650.67,
+      "lat": 33.147641,
+      "lon": 118.58803,
+      "alt": 1303.3,
+      "gs": 92.3,
+      "hdg": 123.4,
+      "source": "modeled-route"
+    },
+    {
+      "t": 655.54,
+      "lat": 32.773225,
+      "lon": 119.26018,
+      "alt": 877.1,
+      "gs": 60.9,
+      "hdg": 125.0,
+      "source": "modeled-route"
+    },
+    {
+      "t": 660.4,
+      "lat": 32.383508,
+      "lon": 119.917019,
+      "alt": 529.3,
+      "gs": 35.3,
+      "hdg": 125.6,
+      "source": "modeled-route"
+    },
+    {
+      "t": 665.27,
+      "lat": 31.987617,
+      "lon": 120.565836,
+      "alt": 269.2,
+      "gs": 16.1,
+      "hdg": 126.1,
+      "source": "modeled-route"
+    },
+    {
+      "t": 670.14,
+      "lat": 31.587611,
+      "lon": 121.208317,
+      "alt": 106.3,
+      "gs": 4.1,
+      "hdg": 130.9,
+      "source": "modeled-route"
+    },
+    {
+      "t": 675.0,
+      "lat": 31.143378,
+      "lon": 121.805214,
+      "alt": 50,
+      "gs": 0,
+      "hdg": 130.9,
+      "source": "modeled-route"
+    }
+  ]
+}

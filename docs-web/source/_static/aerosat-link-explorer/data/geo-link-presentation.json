@@ -1,0 +1,173 @@
+{
+  "meta": {
+    "title": "GEO aviation link geometry — course & presentation reference",
+    "purpose": "Slides, oral explanations, and diagram copy for PVG–CDG IFC / GEO elevation teaching",
+    "lastUpdated": "2026-06-10",
+    "relatedAppFeatures": [
+      "View 1 map: route coloured by best-GEO elevation tier",
+      "Analysis panel: altitude/speed profile + interactive elevation side-view",
+      "GEO satellite markers on equator"
+    ]
+  },
+  "glossary": [
+    {
+      "term": "Elevation angle (θ)",
+      "definition": "Angle at the aircraft between the local horizontal plane and the line of sight to the GEO satellite.",
+      "note": "Computed in-app with Re=6378.137 km, Rgeo=42164 km (same as 0.1513 ratio in textbooks)."
+    },
+    {
+      "term": "Sub-satellite point",
+      "definition": "Point on Earth's equator directly below a GEO satellite (longitude = orbital slot).",
+      "note": "GEO satellites appear fixed over one longitude; latitude = 0°."
+    },
+    {
+      "term": "SAS / Gateway / Teleport",
+      "definition": "Satellite Access Station — ground earth station that connects the satellite feeder link to terrestrial IP networks.",
+      "aliases": ["Earth station", "GES", "Gateway"]
+    },
+    {
+      "term": "Bent-pipe",
+      "definition": "Transparent GEO payload: uplink is frequency-shifted and amplified, not packet-processed onboard.",
+      "note": "Inmarsat GX I-5 payload is bent-pipe Ka-band."
+    },
+    {
+      "term": "ATC tower",
+      "definition": "Air traffic control voice/surveillance (VHF, ADS-B, CPDLC). Separate from Ku/Ka passenger broadband.",
+      "warning": "Do not draw ATC as part of the GEO IFC chain in slides."
+    }
+  ],
+  "elevationThresholds": {
+    "sourceNote": "Matches app tier colours in src/app.js geoElevationTier()",
+    "tiers": [
+      { "id": "strong", "minDeg": 25, "label": "Strong ≥ 25°", "color": "#22c55e" },
+      { "id": "usable", "minDeg": 10, "maxDeg": 25, "label": "Usable 10–25°", "color": "#84cc16" },
+      { "id": "limited", "minDeg": 5, "maxDeg": 10, "label": "Limited 5–10°", "color": "#facc15" },
+      { "id": "marginal", "minDeg": 0, "maxDeg": 5, "label": "Marginal 0–5°", "color": "#f97316" },
+      { "id": "blocked", "maxDeg": 0, "label": "Blocked < 0° (below horizon)", "color": "#ef4444" }
+    ],
+    "operationalFloorDeg": 10,
+    "operationalFloorRationale": "Ka-band aviation IFC: rain fade, antenna scan limits, and regulatory/engineering practice often treat ~10° as practical service floor."
+  },
+  "connectivityChain": {
+    "passengerBroadband": [
+      "Passenger / cabin Wi-Fi terminal (onboard)",
+      "Aircraft Ka-band terminal (e.g. Honeywell JetWave class)",
+      "Over-the-air user link: Aircraft ↔ GEO (Inmarsat-5 / GX)",
+      "Bent-pipe satellite payload",
+      "Feeder link: GEO ↔ Satellite Access Station (SAS)",
+      "Terrestrial IP / airline operations network"
+    ],
+    "atcSeparate": [
+      "Pilot ↔ ATC: primarily VHF voice, ADS-B, CPDLC",
+      "Safety services may use L-band (e.g. SwiftBroadband Safety) — parallel to Ka IFC, not the same chain"
+    ]
+  },
+  "gxGroundSegmentExamples": [
+    { "name": "Fucino", "country": "Italy", "role": "GX SAS (Indian Ocean region)" },
+    { "name": "Nemea", "country": "Greece", "role": "GX SAS" },
+    { "name": "Lino Lakes", "country": "USA (Minnesota)", "role": "GX SAS" },
+    { "name": "Winnipeg", "country": "Canada", "role": "GX SAS" },
+    { "name": "Auckland area", "country": "New Zealand", "role": "GX SAS (two sites)" }
+  ],
+  "slideDeckOutline": [
+    {
+      "slide": 1,
+      "title": "Why elevation matters on long-haul routes",
+      "bullets": [
+        "GEO sits ~35,786 km above the equator — aircraft sees it at an elevation angle θ",
+        "Lower θ → longer slant path → more atmosphere & rain fade (critical for Ka)",
+        "Along PVG–CDG, latitude and longitude change which GEO slot is best"
+      ]
+    },
+    {
+      "slide": 2,
+      "title": "Side-view geometry (meridian slice)",
+      "bullets": [
+        "Earth arc, aircraft at cruise (~12 km), GEO above equator slot",
+        "Draw θ at aircraft between horizontal and line-of-sight",
+        "Label: NOT to scale (GEO distance compressed in teaching diagrams)"
+      ],
+      "diagramHint": "Use app Analysis panel screenshot or redraw from geo-link-presentation.md ASCII"
+    },
+    {
+      "slide": 3,
+      "title": "End-to-end GX Aviation chain (bent-pipe)",
+      "bullets": [
+        "Aircraft terminal → GEO → SAS/teleport → Internet",
+        "Satellite does not terminate IP; it relays RF",
+        "ATC tower is a separate slide / dashed box — not in this chain"
+      ]
+    },
+    {
+      "slide": 4,
+      "title": "PVG–CDG study: what the app shows",
+      "bullets": [
+        "Representative ADS-B track (32 samples) — one published ATS-style path",
+        "Map colours = best route-serving GX elevation tier",
+        "Table = per-satellite % of track with θ ≥ 10°",
+        "Live aircraft layer = OpenSky snapshot (optional, separate from representative track)"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "id": "elevation-formula",
+      "title": "Earth station elevation angle (GEO)",
+      "url": "https://www.satnow.com/calculators/earth-station-elevation-angle-calculator",
+      "note": "el = atan((cos(Δλ)cos(φ) − Re/Rgeo) / sqrt(1 − cos²(Δλ)cos²(φ))); Re/Rgeo ≈ 0.1513"
+    },
+    {
+      "id": "rf-essentials-look-angle",
+      "title": "RF Essentials — look angle & azimuth to GEO",
+      "url": "https://rfessentials.com/rf-knowledge-base/how-do-i-calculate-the-look-angle-and-azimuth-from-a-ground-station-to-a-geostat/",
+      "note": "Step-by-step elevation and azimuth for ground stations (same geometry as aircraft nadir)."
+    },
+    {
+      "id": "itu-s1503",
+      "title": "ITU-R S.1503 — elevation angle definitions for coordination software",
+      "url": "https://www.itu.int/dms_pubrec/itu-r/rec/s/R-REC-S.1503-4-202309-I!!PDF-E.pdf",
+      "note": "Formal definitions of elevation/azimuth in RR context; app uses classical GEO geometry."
+    },
+    {
+      "id": "inmarsat-gx-developer",
+      "title": "Inmarsat Developer — Global Xpress overview",
+      "url": "https://developer.inmarsat.com/technology/gx/",
+      "note": "Ka-band global network, aviation/enterprise/maritime markets."
+    },
+    {
+      "id": "inmarsat-gx-ground-network",
+      "title": "Inmarsat completes GX ground network (SAS locations)",
+      "url": "https://avweb.com/press-releases/inmarsat-completes-construction-of-the-global-xpress-ground-network/",
+      "note": "Fucino, Nemea, Lino Lakes, Winnipeg, Auckland sites."
+    },
+    {
+      "id": "inmarsat-aviation-connected-aircraft",
+      "title": "Inmarsat Aviation — The correctly connected aircraft (PDF)",
+      "url": "https://www.inmarsat.com/content/dam/inmarsat/corporate/documents/aviation/insights/2017/Inmarsat%20Aviation%20-%20The%20Correctly%20Connected%20Aircraft.pdf.coredownload.pdf",
+      "note": "GX Aviation value proposition; cabin vs cockpit connectivity split."
+    },
+    {
+      "id": "honeywell-jetwave-gx",
+      "title": "Honeywell JetWave + GX Aviation flight tests",
+      "url": "https://www.ukspace.org/honeywell-inmarsat/",
+      "note": "Onboard terminal connects to Inmarsat-5; Ka-band IFC over land and ocean."
+    },
+    {
+      "id": "pisa-satcom-gx-mobile",
+      "title": "University of Pisa — GSO Inmarsat GX mobile broadband (lecture PDF)",
+      "url": "https://docenti.ing.unipi.it/m.luise/SatCom/14%20%20-%20The%20How%20and%20Why%20-%20Services%20&%20Constellations_Mobile%20(RdG).pdf",
+      "note": "Bent-pipe payload, spot beams, gateway beams, ground segment diagram."
+    },
+    {
+      "id": "inmarsat-fleet-public",
+      "title": "Inmarsat — Our satellites (public fleet page)",
+      "url": "https://www.inmarsat.com/en/about/our-satellites.html",
+      "note": "Sub-satellite longitudes for GX fleet used in satellite-catalog.json."
+    }
+  ],
+  "pptFigureCaptions": {
+    "sideView": "Meridian-plane schematic: elevation θ from aircraft to GEO; feeder link from SAS to satellite; ATC shown separately.",
+    "mapTrack": "Representative ADS-B track coloured by best serving GX elevation tier (not a single live flight).",
+    "aircraftLayer": "OpenSky regional snapshot; green = published PVG↔CDG flight numbers; orange = other traffic near corridor/airports."
+  }
+}

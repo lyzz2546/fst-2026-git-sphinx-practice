@@ -1,0 +1,47 @@
+{
+  "source": "Modeled complete routes with OpenSky historical evidence",
+  "builtAt": "2026-06-13T12:28:40Z",
+  "tracks": {
+    "CDG-PVG-AF": {
+      "file": "data/tracks/history-completed/cdg-pvg-af-afr116-3965a8-completed.json",
+      "rawOpenSkyFile": "data/tracks/history/cdg-pvg-af-afr116-3965a8-20260610.json",
+      "displayTrackType": "modeled-complete-with-opensky-evidence",
+      "openSkyEvidencePointCount": 314,
+      "openSkyMaxGapMinutes": 348.8,
+      "modelPointCount": 140,
+      "completedTrackDistanceKm": 10438,
+      "completedDurationMinutes": 675.0
+    },
+    "CDG-PVG-MU": {
+      "file": "data/tracks/history-completed/cdg-pvg-mu-ces554-780f39-completed.json",
+      "rawOpenSkyFile": "data/tracks/history/cdg-pvg-mu-ces554-780f39-20260610.json",
+      "displayTrackType": "modeled-complete-with-opensky-evidence",
+      "openSkyEvidencePointCount": 139,
+      "openSkyMaxGapMinutes": 294.0,
+      "modelPointCount": 132,
+      "completedTrackDistanceKm": 9440,
+      "completedDurationMinutes": 696.0
+    },
+    "PVG-CDG-AF": {
+      "file": "data/tracks/history-completed/pvg-cdg-af-afr111-394a03-completed.json",
+      "rawOpenSkyFile": "data/tracks/history/pvg-cdg-af-afr111-394a03-20260612.json",
+      "displayTrackType": "modeled-complete-with-opensky-evidence",
+      "openSkyEvidencePointCount": 108,
+      "openSkyMaxGapMinutes": 384.9,
+      "modelPointCount": 140,
+      "completedTrackDistanceKm": 10438,
+      "completedDurationMinutes": 694.6
+    },
+    "PVG-CDG-MU": {
+      "file": "data/tracks/history-completed/pvg-cdg-mu-ces219-780f39-completed.json",
+      "rawOpenSkyFile": "data/tracks/history/pvg-cdg-mu-ces219-780f39-20260612.json",
+      "displayTrackType": "modeled-complete-with-opensky-evidence",
+      "openSkyEvidencePointCount": 67,
+      "openSkyMaxGapMinutes": 189.4,
+      "modelPointCount": 132,
+      "completedTrackDistanceKm": 9440,
+      "completedDurationMinutes": 696.0
+    }
+  },
+  "aircraftSnapshot": "data/opensky-history-display-snapshot.json"
+}

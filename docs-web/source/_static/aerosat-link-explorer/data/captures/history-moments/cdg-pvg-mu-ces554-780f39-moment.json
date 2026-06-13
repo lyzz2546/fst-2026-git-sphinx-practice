@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "source": "opensky-history-track-midpoint",
+    "routeId": "CDG-PVG-MU",
+    "openskyTime": 1781092881,
+    "routeFlightSource": "same-historical-track-as-route-line",
+    "routeFlightsFound": [
+      {
+        "routeId": "CDG-PVG-MU",
+        "callsign": "CES554",
+        "icao24": "780f39"
+      }
+    ],
+    "routeFlightCount": 1,
+    "contextAircraftCount": 0,
+    "selectedPointIndex": 69,
+    "trackFile": "data/tracks/history/cdg-pvg-mu-ces554-780f39-20260610.json",
+    "note": "Midpoint aircraft marker generated from the same OpenSky historical track file used for the route line."
+  },
+  "states": [
+    [
+      "780f39",
+      "CES554  ",
+      null,
+      1781092881,
+      1781092881,
+      2.5113,
+      49.4708,
+      3657.0,
+      false,
+      186.94,
+      24.0,
+      0,
+      null,
+      3657.0,
+      null,
+      false,
+      0
+    ]
+  ]
+}
