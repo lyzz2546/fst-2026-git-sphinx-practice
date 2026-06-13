@@ -12,7 +12,9 @@
 
 该应用围绕上海浦东机场（PVG）至巴黎戴高乐机场（CDG）的长航程航线，研究航线上的卫星通信连通性问题。它结合了平面航线地图、航空器交通证据、GEO 卫星覆盖、轨迹剖面以及链路几何可视化。项目目标是把航空与通信系统中的一个研究问题转化为可以在浏览器中运行和交互探索的软件工具。
 
-[打开 AeroSat Link Explorer](_static/aerosat-link-explorer/index.html)
+```{raw} html
+<p><a href="_static/aerosat-link-explorer/index.html">打开 AeroSat Link Explorer</a></p>
+```
 
 ```{raw} html
 <figure>

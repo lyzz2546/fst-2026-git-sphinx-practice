@@ -12,7 +12,9 @@ For Assignment 4, I selected **Option B: Academic/Research Tool** and developed 
 
 The application studies satellite connectivity along the PVG-CDG long-haul aviation route. It combines a flat route map, aircraft traffic evidence, GEO satellite coverage, trajectory profiles, and link-geometry visualization. The goal is to turn a research question from aviation and communication systems into a runnable browser-based tool.
 
-[Open AeroSat Link Explorer](_static/aerosat-link-explorer/index.html)
+```{raw} html
+<p><a href="_static/aerosat-link-explorer/index.html">Open AeroSat Link Explorer</a></p>
+```
 
 ```{raw} html
 <figure>
