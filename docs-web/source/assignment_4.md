@@ -111,8 +111,6 @@ This was a useful example of handling an AI-assisted development mistake: the fi
 
 ## Results
 
-The final application runs in a browser and is integrated into this Sphinx coursework site as a static web application.
-
 The current submission version supports:
 
 - PVG to CDG and CDG to PVG directions.
@@ -120,8 +118,6 @@ The current submission version supports:
 - GEO satellite coverage analysis along the route.
 - Modeled complete route display with OpenSky historical evidence.
 - Interactive map layers and traffic/status panels.
-
-The application is suitable for this course assignment because it is functional, domain-specific, and AI-assisted.
 
 ## Limitations
 
